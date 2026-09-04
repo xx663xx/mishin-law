@@ -4,7 +4,29 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 const navigationEntry = performance.getEntriesByType?.("navigation")[0];
 const shouldResetScroll = navigationEntry?.type === "reload" || !window.location.hash;
-if (shouldResetScroll) window.scrollTo(0, 0);
+function forceScrollTop() {
+  document.documentElement.style.scrollBehavior = "auto";
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  window.scrollTo(0, 0);
+}
+if (shouldResetScroll) {
+  forceScrollTop();
+  [0, 40, 120, 280, 560, 900].forEach((delay) => window.setTimeout(forceScrollTop, delay));
+  window.addEventListener("load", () => {
+    forceScrollTop();
+    window.requestAnimationFrame(forceScrollTop);
+    window.setTimeout(forceScrollTop, 180);
+  }, { once: true });
+  window.addEventListener("pageshow", () => {
+    forceScrollTop();
+    window.requestAnimationFrame(forceScrollTop);
+  });
+  window.setTimeout(() => {
+    forceScrollTop();
+    document.documentElement.style.scrollBehavior = "";
+  }, 1040);
+}
 window.requestAnimationFrame(() => {
   document.documentElement.classList.remove("page-booting");
   document.documentElement.classList.add("page-ready");
@@ -18,13 +40,14 @@ const siteIntro = document.querySelector(".site-intro");
 if (siteIntro) {
   let introSeen = false;
   try { introSeen = sessionStorage.getItem("podkinuli-intro-seen") === "1"; } catch (_) { introSeen = false; }
-  if (introSeen || prefersReducedMotion) {
+  const useIntroCover = shouldResetScroll || !introSeen;
+  if (!useIntroCover) {
     siteIntro.classList.add("hidden");
   } else {
     window.setTimeout(() => {
       siteIntro.classList.add("hidden");
       try { sessionStorage.setItem("podkinuli-intro-seen", "1"); } catch (_) { /* storage may be disabled */ }
-    }, 1650);
+    }, prefersReducedMotion ? 320 : shouldResetScroll ? 1150 : 1650);
   }
 }
 
