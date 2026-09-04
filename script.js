@@ -1,4 +1,19 @@
 const body = document.body;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const siteIntro = document.querySelector(".site-intro");
+if (siteIntro) {
+  let introSeen = false;
+  try { introSeen = sessionStorage.getItem("podkinuli-intro-seen") === "1"; } catch (_) { introSeen = false; }
+  if (introSeen || prefersReducedMotion) {
+    siteIntro.classList.add("hidden");
+  } else {
+    window.setTimeout(() => {
+      siteIntro.classList.add("hidden");
+      try { sessionStorage.setItem("podkinuli-intro-seen", "1"); } catch (_) { /* storage may be disabled */ }
+    }, 1650);
+  }
+}
 
 const profiles = {
   roman: {
@@ -59,6 +74,21 @@ document.querySelectorAll(".nav a").forEach((link) => link.addEventListener("cli
   menuButton.setAttribute("aria-expanded", "false");
 }));
 
+const hero = document.querySelector(".hero");
+if (hero && !prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
+  hero.addEventListener("pointermove", (event) => {
+    const bounds = hero.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width - .5) * 2;
+    const y = ((event.clientY - bounds.top) / bounds.height - .5) * 2;
+    hero.style.setProperty("--hero-x", x.toFixed(3));
+    hero.style.setProperty("--hero-y", y.toFixed(3));
+  });
+  hero.addEventListener("pointerleave", () => {
+    hero.style.setProperty("--hero-x", "0");
+    hero.style.setProperty("--hero-y", "0");
+  });
+}
+
 document.querySelectorAll(".practice-tab").forEach((tab) => tab.addEventListener("click", () => {
   const target = tab.dataset.practice;
   document.querySelectorAll(".practice-tab").forEach((item) => {
@@ -71,6 +101,26 @@ document.querySelectorAll(".practice-tab").forEach((tab) => tab.addEventListener
     panel.hidden = !selected;
     panel.classList.toggle("active", selected);
   });
+}));
+
+document.querySelectorAll(".case-toggle").forEach((button) => button.addEventListener("click", () => {
+  const row = button.closest(".case-row");
+  const story = row.querySelector(".case-story");
+  const willOpen = story.hidden;
+  document.querySelectorAll(".case-row").forEach((item) => {
+    const itemStory = item.querySelector(".case-story");
+    const itemButton = item.querySelector(".case-toggle");
+    itemStory.hidden = true;
+    item.classList.remove("is-open");
+    itemButton.setAttribute("aria-expanded", "false");
+    itemButton.querySelector("b").textContent = "+";
+  });
+  if (willOpen) {
+    story.hidden = false;
+    row.classList.add("is-open");
+    button.setAttribute("aria-expanded", "true");
+    button.querySelector("b").textContent = "−";
+  }
 }));
 
 const searchInput = document.querySelector("#lawyer-search");
@@ -86,6 +136,11 @@ searchInput.addEventListener("input", () => {
   });
   teamEmpty.hidden = visibleCount !== 0;
 });
+
+function syncBodyLock() {
+  const hasOpenModal = document.querySelector(".profile-modal.open, .consult-modal.open, .matcher-modal.open, .urgent-modal.open");
+  body.style.overflow = hasOpenModal ? "hidden" : "";
+}
 
 const profileModal = document.querySelector(".profile-modal");
 function openProfile(key) {
@@ -109,13 +164,13 @@ function openProfile(key) {
   }));
   profileModal.classList.add("open");
   profileModal.setAttribute("aria-hidden", "false");
-  body.style.overflow = "hidden";
+  syncBodyLock();
   document.querySelector(".profile-close").focus();
 }
 function closeProfile() {
   profileModal.classList.remove("open");
   profileModal.setAttribute("aria-hidden", "true");
-  body.style.overflow = "";
+  syncBodyLock();
 }
 document.querySelectorAll("[data-lawyer]").forEach((button) => button.addEventListener("click", () => openProfile(button.dataset.lawyer)));
 document.querySelectorAll("[data-close-profile]").forEach((element) => element.addEventListener("click", closeProfile));
@@ -125,12 +180,12 @@ function openConsult() {
   closeProfile();
   consultModal.classList.add("open");
   consultModal.setAttribute("aria-hidden", "false");
-  body.style.overflow = "hidden";
+  syncBodyLock();
 }
 function closeConsult() {
   consultModal.classList.remove("open");
   consultModal.setAttribute("aria-hidden", "true");
-  body.style.overflow = "";
+  syncBodyLock();
 }
 document.querySelectorAll("[data-open-consult]").forEach((button) => button.addEventListener("click", openConsult));
 document.querySelector("[data-profile-consult]").addEventListener("click", openConsult);
@@ -145,6 +200,176 @@ function showReview(index) {
 }
 document.querySelector("[data-review-prev]").addEventListener("click", () => showReview(reviewIndex - 1));
 document.querySelector("[data-review-next]").addEventListener("click", () => showReview(reviewIndex + 1));
+
+const matcherModal = document.querySelector(".matcher-modal");
+const matcherContent = document.querySelector("#matcher-content");
+const matcherBack = document.querySelector(".matcher-back");
+const matcherSteps = [
+  {
+    label: "ОБЛАСТЬ ВОПРОСА",
+    title: "С чем вы столкнулись?",
+    text: "Выберите ближайшую тему. На следующем шаге уточним стадию ситуации.",
+    key: "area",
+    options: [
+      ["family", "Семья и личные споры"],
+      ["property", "Недвижимость и наследство"],
+      ["business", "Бизнес и договоры"],
+      ["public", "Государственные органы"]
+    ]
+  },
+  {
+    label: "СТАДИЯ СИТУАЦИИ",
+    title: "Что уже происходит?",
+    text: "Стадия влияет на тактику, сроки и выбор специалиста.",
+    key: "stage",
+    options: [
+      ["planning", "Пока только оцениваю риски"],
+      ["document", "Уже получил документ"],
+      ["court", "Дело дошло до суда"],
+      ["urgent", "Нужны действия сегодня"]
+    ]
+  },
+  {
+    label: "ФОРМАТ ПОМОЩИ",
+    title: "Какой результат нужен?",
+    text: "Это последний вопрос — после него покажем подходящего специалиста.",
+    key: "need",
+    options: [
+      ["advice", "Понять варианты и риски"],
+      ["documents", "Подготовить документы"],
+      ["negotiation", "Провести переговоры"],
+      ["representation", "Вести дело полностью"]
+    ]
+  }
+];
+const matcherState = { step: 0, answers: {} };
+
+function updateMatcherChrome() {
+  const displayStep = Math.min(matcherState.step + 1, matcherSteps.length);
+  document.querySelector("#matcher-count").textContent = String(displayStep).padStart(2, "0");
+  document.querySelectorAll(".matcher-progress i").forEach((bar, index) => bar.classList.toggle("active", index <= matcherState.step));
+  matcherBack.hidden = matcherState.step === 0;
+}
+
+function chooseMatchedLawyer() {
+  if (matcherState.answers.area === "family") return "roman";
+  if (matcherState.answers.area === "property") return "mikhail";
+  if (matcherState.answers.area === "public") return "igor";
+  return matcherState.answers.stage === "urgent" ? "bogdan" : "konstantin";
+}
+
+function renderMatcherResult() {
+  const key = chooseMatchedLawyer();
+  const profile = profiles[key];
+  matcherBack.hidden = false;
+  const result = document.createElement("div");
+  result.className = "matcher-result";
+
+  const imageWrap = document.createElement("div");
+  imageWrap.className = "matcher-result-image";
+  const image = document.createElement("img");
+  image.src = profile.image;
+  image.alt = profile.name;
+  imageWrap.appendChild(image);
+
+  const copy = document.createElement("div");
+  const label = document.createElement("small");
+  label.textContent = "РЕКОМЕНДУЕМЫЙ СПЕЦИАЛИСТ";
+  const title = document.createElement("h2");
+  title.textContent = profile.name;
+  const paragraph = document.createElement("p");
+  paragraph.textContent = `${profile.focus} · ${profile.experience} опыта. Подключится к первичному разбору и определит практический следующий шаг.`;
+  copy.append(label, title, paragraph);
+
+  const list = document.createElement("ul");
+  ["Проверит сроки и слабые места позиции", "Составит план действий по этапам", "Заранее обозначит формат и стоимость работы"].forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+  const actions = document.createElement("div");
+  actions.className = "matcher-result-actions";
+  const profileButton = document.createElement("button");
+  profileButton.type = "button";
+  profileButton.textContent = "Открыть профиль ↗";
+  profileButton.addEventListener("click", () => {
+    closeMatcher();
+    openProfile(key);
+  });
+  const consultButton = document.createElement("button");
+  consultButton.type = "button";
+  consultButton.textContent = "Связаться";
+  consultButton.addEventListener("click", () => {
+    closeMatcher();
+    openConsult();
+  });
+  actions.append(profileButton, consultButton);
+  copy.append(list, actions);
+  result.append(imageWrap, copy);
+  matcherContent.replaceChildren(result);
+}
+
+function renderMatcherStep() {
+  updateMatcherChrome();
+  if (matcherState.step >= matcherSteps.length) {
+    renderMatcherResult();
+    return;
+  }
+  const data = matcherSteps[matcherState.step];
+  const step = document.createElement("div");
+  step.className = "matcher-step";
+  const label = document.createElement("small");
+  label.textContent = data.label;
+  const title = document.createElement("h2");
+  title.id = "matcher-title";
+  title.textContent = data.title;
+  const text = document.createElement("p");
+  text.textContent = data.text;
+  const options = document.createElement("div");
+  options.className = "matcher-options";
+  data.options.forEach(([value, optionLabel]) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    const strong = document.createElement("strong");
+    strong.textContent = optionLabel;
+    const arrow = document.createElement("span");
+    arrow.textContent = "↗";
+    button.append(strong, arrow);
+    button.addEventListener("click", () => {
+      matcherState.answers[data.key] = value;
+      matcherState.step += 1;
+      renderMatcherStep();
+    });
+    options.appendChild(button);
+  });
+  step.append(label, title, text, options);
+  matcherContent.replaceChildren(step);
+}
+
+function openMatcher() {
+  closeProfile();
+  closeConsult();
+  closeUrgent();
+  toggleChat(false);
+  matcherState.step = 0;
+  matcherState.answers = {};
+  renderMatcherStep();
+  matcherModal.classList.add("open");
+  matcherModal.setAttribute("aria-hidden", "false");
+  syncBodyLock();
+  window.setTimeout(() => matcherModal.querySelector(".matcher-close").focus(), 100);
+}
+function closeMatcher() {
+  matcherModal.classList.remove("open");
+  matcherModal.setAttribute("aria-hidden", "true");
+  syncBodyLock();
+}
+matcherBack.addEventListener("click", () => {
+  matcherState.step = Math.max(0, matcherState.step - 1);
+  renderMatcherStep();
+});
+document.querySelectorAll("[data-open-match]").forEach((button) => button.addEventListener("click", openMatcher));
+document.querySelectorAll("[data-close-match]").forEach((element) => element.addEventListener("click", closeMatcher));
 
 const chat = document.querySelector(".chat");
 const chatLauncher = document.querySelector(".chat-launcher");
@@ -252,6 +477,7 @@ function toggleChat(force) {
   chat.classList.toggle("open", open);
   chat.setAttribute("aria-hidden", String(!open));
   chatLauncher.setAttribute("aria-expanded", String(open));
+  body.classList.toggle("chat-active", open);
   if (open) setTimeout(() => chatInput.focus(), 120);
 }
 function getChatTime() {
@@ -393,7 +619,35 @@ function resetChat() {
   document.querySelectorAll("[data-chat-topic]").forEach((button) => button.classList.remove("active"));
   runChatScenario("welcome");
 }
+
+const urgentModal = document.querySelector(".urgent-modal");
+function openUrgent() {
+  closeProfile();
+  closeConsult();
+  closeMatcher();
+  toggleChat(false);
+  urgentModal.classList.add("open");
+  urgentModal.setAttribute("aria-hidden", "false");
+  syncBodyLock();
+  window.setTimeout(() => urgentModal.querySelector(".urgent-close").focus(), 100);
+}
+function closeUrgent() {
+  urgentModal.classList.remove("open");
+  urgentModal.setAttribute("aria-hidden", "true");
+  syncBodyLock();
+}
+document.querySelectorAll("[data-open-urgent]").forEach((button) => button.addEventListener("click", openUrgent));
+document.querySelectorAll("[data-close-urgent]").forEach((element) => element.addEventListener("click", closeUrgent));
+document.querySelectorAll("[data-urgent-scenario]").forEach((button) => button.addEventListener("click", () => {
+  const scenario = button.dataset.urgentScenario;
+  const label = button.querySelector("strong").textContent;
+  closeUrgent();
+  toggleChat(true);
+  runChatScenario(scenario, label);
+}));
+
 chatLauncher.addEventListener("click", () => toggleChat());
+document.querySelectorAll("[data-open-chat]").forEach((button) => button.addEventListener("click", () => toggleChat(true)));
 document.querySelector(".chat-close").addEventListener("click", () => toggleChat(false));
 document.querySelector(".chat-reset").addEventListener("click", resetChat);
 document.querySelectorAll("[data-chat-topic]").forEach((button) => button.addEventListener("click", () => runChatScenario(button.dataset.chatTopic, button.textContent.trim().replace(/^\d+\s*/, ""))));
@@ -415,5 +669,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
   closeProfile();
   closeConsult();
+  closeMatcher();
+  closeUrgent();
   toggleChat(false);
 });
