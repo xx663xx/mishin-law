@@ -1,6 +1,19 @@
 const body = document.body;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+const navigationEntry = performance.getEntriesByType?.("navigation")[0];
+const shouldResetScroll = navigationEntry?.type === "reload" || !window.location.hash;
+function resetScrollPosition() {
+  if (shouldResetScroll) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+}
+resetScrollPosition();
+window.addEventListener("pageshow", () => {
+  window.requestAnimationFrame(resetScrollPosition);
+  window.setTimeout(resetScrollPosition, 80);
+});
+window.addEventListener("beforeunload", resetScrollPosition);
+
 const siteIntro = document.querySelector(".site-intro");
 if (siteIntro) {
   let introSeen = false;
