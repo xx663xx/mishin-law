@@ -769,8 +769,102 @@ document.querySelector(".chat-form").addEventListener("submit", (event) => {
 });
 resetChat();
 
-document.querySelector("#contact-form").addEventListener("submit", (event) => {
+const contactForm = document.querySelector("#contact-form");
+const phoneInput = document.querySelector("#contact-phone");
+const topicPicker = document.querySelector("[data-topic-picker]");
+const topicTrigger = topicPicker.querySelector(".topic-trigger");
+const topicOptions = topicPicker.querySelector(".topic-options");
+const topicInput = document.querySelector("#contact-topic");
+const topicLabel = topicPicker.querySelector("[data-topic-label]");
+let phoneTouched = false;
+
+function normalizePhone(value) {
+  let digits = value.replace(/\D/g, "");
+  if (digits.startsWith("8")) digits = `7${digits.slice(1)}`;
+  if (!digits.startsWith("7")) digits = `7${digits}`;
+  return digits.slice(0, 11);
+}
+function formatPhone(value) {
+  const subscriber = normalizePhone(value).slice(1);
+  if (!subscriber) return "+7";
+  let formatted = `+7 (${subscriber.slice(0, 3)}`;
+  if (subscriber.length >= 3) formatted += ")";
+  if (subscriber.length > 3) formatted += ` ${subscriber.slice(3, 6)}`;
+  if (subscriber.length > 6) formatted += `-${subscriber.slice(6, 8)}`;
+  if (subscriber.length > 8) formatted += `-${subscriber.slice(8, 10)}`;
+  return formatted;
+}
+function updatePhoneValidity() {
+  const complete = normalizePhone(phoneInput.value).length === 11;
+  phoneInput.setCustomValidity(complete ? "" : "Введите номер полностью: +7 (999) 999-99-99");
+  phoneInput.setAttribute("aria-invalid", String(phoneTouched && !complete));
+  return complete;
+}
+phoneInput.value = formatPhone(phoneInput.value);
+updatePhoneValidity();
+phoneInput.addEventListener("input", () => {
+  phoneInput.value = formatPhone(phoneInput.value);
+  phoneTouched = phoneInput.value.length > 2;
+  updatePhoneValidity();
+  window.requestAnimationFrame(() => phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length));
+});
+phoneInput.addEventListener("focus", () => {
+  window.requestAnimationFrame(() => phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length));
+});
+phoneInput.addEventListener("blur", () => {
+  phoneTouched = true;
+  updatePhoneValidity();
+});
+phoneInput.addEventListener("keydown", (event) => {
+  if ((event.key === "Backspace" || event.key === "Delete") && phoneInput.selectionStart <= 2 && phoneInput.selectionEnd <= 2) event.preventDefault();
+});
+
+function setTopicPickerOpen(open) {
+  topicPicker.classList.toggle("open", open);
+  topicOptions.hidden = !open;
+  topicTrigger.setAttribute("aria-expanded", String(open));
+}
+function selectTopic(option) {
+  const value = option.dataset.topicOption;
+  topicInput.value = value;
+  topicLabel.textContent = value;
+  topicOptions.querySelectorAll("[data-topic-option]").forEach((item) => item.setAttribute("aria-selected", String(item === option)));
+  setTopicPickerOpen(false);
+  topicTrigger.focus();
+}
+topicTrigger.addEventListener("click", () => setTopicPickerOpen(topicOptions.hidden));
+topicTrigger.addEventListener("keydown", (event) => {
+  if (!["ArrowDown", "ArrowUp", "Enter", " "].includes(event.key)) return;
   event.preventDefault();
+  setTopicPickerOpen(true);
+  const selected = topicOptions.querySelector('[aria-selected="true"]');
+  (selected || topicOptions.querySelector("button")).focus();
+});
+topicOptions.querySelectorAll("[data-topic-option]").forEach((option, index, options) => {
+  option.addEventListener("click", () => selectTopic(option));
+  option.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setTopicPickerOpen(false);
+      topicTrigger.focus();
+    }
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      options[(index + (event.key === "ArrowDown" ? 1 : options.length - 1)) % options.length].focus();
+    }
+  });
+});
+document.addEventListener("pointerdown", (event) => {
+  if (!topicPicker.contains(event.target)) setTopicPickerOpen(false);
+});
+
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  phoneTouched = true;
+  if (!updatePhoneValidity()) {
+    phoneInput.reportValidity();
+    phoneInput.focus();
+    return;
+  }
   const data = new FormData(event.currentTarget);
   const subject = `Обращение с сайта: ${data.get("topic")}`;
   const message = `Имя: ${data.get("name")}\nТелефон: ${data.get("phone")}\nТема: ${data.get("topic")}\n\n${data.get("message") || "Описание не указано"}`;
