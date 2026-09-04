@@ -100,8 +100,31 @@
 
     <footer class="footer"><a class="brand" href="#top"><span class="brand-symbol">П</span><span class="brand-name">ПОДКИНУЛИ<small>ЮРИДИЧЕСКАЯ ФИРМА</small></span></a><div><a href="tel:+79832439690">+7 983 243-96-90</a><a href="mailto:cxsuiemode@gmail.com">cxsuiemode@gmail.com</a></div><div><span>© 2026 «Подкинули»</span><span>Информация на сайте не является юридической консультацией</span></div><a class="to-top" href="#top">НАВЕРХ ↑</a></footer>
 
-    <button class="chat-launcher" aria-label="Открыть чат с правовым помощником" aria-expanded="false"><span class="chat-pulse"></span><span class="chat-label">Задать вопрос</span><b>↗</b></button>
-    <aside class="chat" aria-hidden="true" aria-label="Правовой помощник"><header><div><span class="online-dot"></span><p><strong>Правовой помощник</strong><small>Обычно отвечает сразу</small></p></div><button class="chat-close" aria-label="Закрыть чат">×</button></header><div class="chat-messages" aria-live="polite"><div class="bot-message"><span>П</span><p>Здравствуйте. Я помогу определить направление и подскажу, с чего начать. Что произошло?</p></div></div><div class="chat-suggestions"><button data-message="Семейный спор">Семейный спор</button><button data-message="Проблема у бизнеса">Проблема у бизнеса</button><button data-message="Нужен документ">Нужен документ</button></div><form class="chat-form"><input aria-label="Сообщение" placeholder="Напишите вопрос…" autocomplete="off" /><button type="submit" aria-label="Отправить">↑</button></form><small class="chat-disclaimer">Помощник даёт общую информацию, не заменяющую консультацию юриста.</small></aside>
+    <button class="chat-launcher" aria-label="Открыть чат с правовым помощником" aria-expanded="false"><span class="chat-pulse"></span><span class="chat-label">Разобрать ситуацию</span><b>↗</b></button>
+    <aside class="chat" aria-hidden="true" aria-label="Правовой помощник">
+      <header class="chat-header">
+        <div><span class="online-dot"></span><p><strong>Правовой помощник</strong><small>Сценарный разбор · без регистрации</small></p></div>
+        <div class="chat-header-actions"><button class="chat-reset" type="button">Начать заново</button><button class="chat-close" aria-label="Закрыть чат">×</button></div>
+      </header>
+      <div class="chat-shell">
+        <nav class="chat-topics" aria-label="Темы обращения">
+          <p>ВЫБЕРИТЕ ТЕМУ</p>
+          <button data-chat-topic="family"><span>01</span> Семья и дети</button>
+          <button data-chat-topic="property"><span>02</span> Недвижимость и наследство</button>
+          <button data-chat-topic="business"><span>03</span> Бизнес и договоры</button>
+          <button data-chat-topic="public"><span>04</span> Штрафы, налоги, ведомства</button>
+          <button data-chat-topic="documents"><span>05</span> Подготовка документа</button>
+          <button data-chat-topic="urgent"><span>!</span> Срочная ситуация</button>
+          <div class="chat-contact-card"><small>НУЖЕН ЧЕЛОВЕК?</small><a href="tel:+79832439690">+7 983 243-96-90</a><span>Нажмите, чтобы позвонить</span></div>
+        </nav>
+        <section class="chat-dialog">
+          <div class="chat-messages" aria-live="polite"></div>
+          <div class="chat-suggestions" aria-label="Варианты ответа"></div>
+          <form class="chat-form"><input aria-label="Сообщение" placeholder="Опишите ситуацию своими словами…" autocomplete="off" /><button type="submit" aria-label="Отправить">↑</button></form>
+          <small class="chat-disclaimer">Не отправляйте паспортные данные и номера карт. Ответ носит общий информационный характер и не заменяет консультацию юриста.</small>
+        </section>
+      </div>
+    </aside>
 
     <div class="profile-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profile-name"><div class="profile-backdrop" data-close-profile></div><div class="profile-panel"><button class="profile-close" data-close-profile aria-label="Закрыть профиль">×</button><div class="profile-image"><img id="profile-image" src="" alt="" /></div><div class="profile-content"><p class="kicker"><span id="profile-index">01</span> <b id="profile-role"></b></p><h2 id="profile-name"></h2><p class="profile-lead" id="profile-lead"></p><div class="profile-meta"><div><small>ОПЫТ</small><strong id="profile-experience"></strong></div><div><small>ФОКУС</small><strong id="profile-focus"></strong></div></div><h3>Ключевая практика</h3><ul id="profile-list"></ul><blockquote id="profile-quote"></blockquote><button class="button button-acid" data-profile-consult>Обсудить дело <span>↗</span></button></div></div></div>
 
