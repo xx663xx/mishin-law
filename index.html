@@ -6,17 +6,23 @@
     <meta name="description" content="Подкинули — юридическая фирма в Иркутске. Судебная защита, семейные, гражданские, административные и корпоративные споры." />
     <meta name="theme-color" content="#080a09" />
     <title>Подкинули — юридическая фирма</title>
+    <script>
+      document.documentElement.classList.add("page-booting");
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      const navigation = performance.getEntriesByType?.("navigation")[0];
+      if (navigation?.type === "reload" || !location.hash) scrollTo(0, 0);
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Prata&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260904-2" />
+    <link rel="stylesheet" href="styles.css?v=20260904-3" />
   </head>
   <body>
     <div class="noise" aria-hidden="true"></div>
     <div class="site-intro" aria-hidden="true"><div class="intro-mark">П</div><p>ПОДКИНУЛИ <span>·</span> ЮРИДИЧЕСКАЯ ФИРМА</p><div class="intro-line"><i></i></div><small>ФОРМИРУЕМ ПОЗИЦИЮ</small></div>
     <header class="header">
       <a class="brand" href="#top" aria-label="Подкинули — на главную"><span class="brand-symbol">П</span><span class="brand-name">ПОДКИНУЛИ<small>ЮРИДИЧЕСКАЯ ФИРМА</small></span></a>
-      <nav class="nav" aria-label="Основная навигация"><a href="#practice">Практики</a><a href="#team">Команда</a><a href="#cases">Результаты</a><a href="#documents">Документы</a><a href="#reviews">Отзывы</a></nav>
+      <nav class="nav" aria-label="Основная навигация"><a href="#practice">Практики</a><a href="#strategy">Стратегия</a><a href="#team">Команда</a><a href="#cases">Досье</a><a href="#reviews">Отзывы</a></nav>
       <button class="urgent-trigger" data-open-urgent><span></span> Срочная помощь</button>
       <a class="header-phone" href="tel:+79832439690">+7 983 243-96-90</a>
       <button class="menu-button" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
@@ -25,9 +31,12 @@
     <main id="top">
       <section class="hero">
         <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-orbit" aria-hidden="true"><span></span><i></i></div>
+        <p class="hero-watermark" aria-hidden="true">ПОЗИЦИЯ</p>
         <div class="hero-copy reveal" data-hero-copy><p class="kicker"><span>01</span> ЮРИДИЧЕСКАЯ ФИРМА · ИРКУТСК</p><h1>Сложные дела.<br /><em>Ясная позиция.</em></h1><p class="hero-lead">Защищаем людей и бизнес в ситуациях, где цена ошибки слишком высока. Вникаем в детали, говорим прямо, ведём дело до результата.</p><div class="hero-actions"><button class="button button-acid" data-open-match>Разобрать мою ситуацию <span>↗</span></button><a class="button-link" href="#team">Выбрать юриста <span>↓</span></a></div></div>
         <div class="hero-portrait" data-hero-portrait><div class="portrait-index">01 / 05</div><div class="hero-photo-frame"><img src="assets/images/roman-mishin.png" alt="Роман Мишин, управляющий партнёр" /></div><div class="hero-caption"><div><b>Роман Мишин</b><span>Управляющий партнёр</span></div><span class="vertical-word">ПОДКИНУЛИ</span></div></div>
         <div class="hero-stats reveal"><div><strong>15+</strong><span>лет судебной<br />практики</span></div><div><strong>800+</strong><span>судебных<br />заседаний</span></div><div><strong>24/7</strong><span>экстренная<br />связь</span></div></div>
+        <a class="hero-scroll" href="#practice"><span>ПРОКРУТИТЕ</span><i></i></a>
       </section>
 
       <section class="marquee" aria-label="Направления работы"><div>СУДЕБНЫЕ СПОРЫ <i>✦</i> СЕМЕЙНОЕ ПРАВО <i>✦</i> ЗАЩИТА БИЗНЕСА <i>✦</i> НАСЛЕДСТВО <i>✦</i> АДМИНИСТРАТИВНЫЕ ДЕЛА <i>✦</i></div></section>
@@ -49,8 +58,32 @@
         </div>
       </section>
 
+      <div class="chapter-break" aria-hidden="true"><span>КОНФЛИКТ</span><i>→</i><span>ПОЗИЦИЯ</span><b>03</b></div>
+
+      <section id="strategy" class="strategy-room section-pad">
+        <header class="strategy-head reveal"><div><p class="kicker"><span>03</span> СТРАТЕГИЧЕСКАЯ КОМНАТА</p><h2>Соберите контур<br /><em>своего дела.</em></h2></div><p>Три решения превращают неопределённость в первичную карту: уровень риска, ближайший шаг, документы и специалист.</p></header>
+        <div class="strategy-workspace reveal">
+          <div class="strategy-controls">
+            <div class="strategy-question"><span>01</span><div><strong>Тип конфликта</strong><div class="strategy-options"><button data-strategy-area="family">Семья</button><button data-strategy-area="property">Имущество</button><button data-strategy-area="business">Бизнес</button><button data-strategy-area="public">Ведомство</button></div></div></div>
+            <div class="strategy-question"><span>02</span><div><strong>Стадия</strong><div class="strategy-options"><button data-strategy-stage="early">Оцениваю риск</button><button data-strategy-stage="document">Получен документ</button><button data-strategy-stage="court">Уже в суде</button><button data-strategy-stage="urgent">Нужно сегодня</button></div></div></div>
+            <div class="strategy-question"><span>03</span><div><strong>Задача</strong><div class="strategy-options"><button data-strategy-goal="protect">Защитить</button><button data-strategy-goal="recover">Взыскать</button><button data-strategy-goal="negotiate">Договориться</button><button data-strategy-goal="appeal">Обжаловать</button></div></div></div>
+          </div>
+          <aside class="strategy-output" aria-live="polite">
+            <div class="strategy-output-top"><small>ПЕРВИЧНАЯ КАРТА</small><span id="strategy-status">0 / 3</span></div>
+            <div class="strategy-risk"><span>УРОВЕНЬ РИСКА</span><strong id="strategy-risk">—</strong><i id="strategy-risk-bar"></i></div>
+            <div class="strategy-line"><small>ПЕРВЫЙ ШАГ</small><strong id="strategy-step">Выберите три параметра слева</strong></div>
+            <div class="strategy-line"><small>ЧТО ПОДГОТОВИТЬ</small><strong id="strategy-evidence">Документы появятся после выбора</strong></div>
+            <div class="strategy-lawyer"><div><small>СПЕЦИАЛИСТ</small><strong id="strategy-lawyer">Определяется</strong></div><button id="strategy-profile" type="button" disabled>Профиль ↗</button></div>
+            <button class="strategy-contact" data-open-consult disabled>Обсудить эту карту <span>↗</span></button>
+          </aside>
+        </div>
+        <p class="strategy-note">Карта показывает общий маршрут и не заменяет анализ документов юристом.</p>
+      </section>
+
+      <div class="chapter-break chapter-break-dark" aria-hidden="true"><span>ЛЮДИ</span><i>→</i><span>РЕШЕНИЯ</span><b>04</b></div>
+
       <section id="team" class="team section-pad">
-        <div class="team-top reveal"><div class="section-heading"><p class="kicker"><span>03</span> ЛЮДИ ФИРМЫ</p><h2>Нужный опыт<br /><em>для вашей задачи.</em></h2></div><div class="team-search"><label for="lawyer-search">Найти специалиста</label><div><input id="lawyer-search" type="search" placeholder="Имя или направление" /><span>⌕</span></div><button class="match-inline" data-open-match>Не знаете, кого выбрать? Подберём за минуту →</button></div></div>
+        <div class="team-top reveal"><div class="section-heading"><p class="kicker"><span>04</span> ЛЮДИ ФИРМЫ</p><h2>Нужный опыт<br /><em>для вашей задачи.</em></h2></div><div class="team-search"><label for="lawyer-search">Найти специалиста</label><div><input id="lawyer-search" type="search" placeholder="Имя или направление" /><span>⌕</span></div><button class="match-inline" data-open-match>Не знаете, кого выбрать? Подберём за минуту →</button></div></div>
         <div class="team-grid">
           <article class="lawyer-card reveal" data-name="Роман Мишин семейные гражданские судебные споры"><button class="lawyer-open" data-lawyer="roman" aria-label="Открыть профиль Романа Мишина"><span class="lawyer-photo"><img src="assets/images/roman-mishin.png" alt="Роман Артурович Мишин" /></span><span class="lawyer-info"><small>УПРАВЛЯЮЩИЙ ПАРТНЁР</small><strong>Роман Артурович<br />Мишин</strong><em>Семейные и гражданские споры</em><i>Открыть профиль ↗</i></span></button></article>
           <article class="lawyer-card reveal" data-name="Богдан Беляев уголовное право защита бизнеса"><button class="lawyer-open" data-lawyer="bogdan" aria-label="Открыть профиль Богдана Беляева"><span class="lawyer-photo"><img src="assets/images/bogdan-belyaev.png" alt="Беляев Богдан Денисович" /></span><span class="lawyer-info"><small>ПАРТНЁР</small><strong>Беляев Богдан<br />Денисович</strong><em>Уголовно-правовая защита бизнеса</em><i>Открыть профиль ↗</i></span></button></article>
@@ -62,7 +95,17 @@
       </section>
 
       <section id="cases" class="cases section-pad">
-        <div class="cases-intro reveal"><p class="kicker"><span>04</span> НЕДАВНИЕ РЕЗУЛЬТАТЫ</p><h2>Не просто ведём дела.<br /><em>Меняем расклад.</em></h2><p>Как у сильнейших судебных фирм мира, мы показываем опыт через конкретные задачи и итог — без раскрытия адвокатской тайны.</p></div>
+        <div class="cases-intro reveal"><p class="kicker"><span>05</span> НЕДАВНИЕ РЕЗУЛЬТАТЫ</p><h2>Не просто ведём дела.<br /><em>Меняем расклад.</em></h2><p>Как у сильнейших судебных фирм мира, мы показываем опыт через конкретные задачи и итог — без раскрытия адвокатской тайны.</p></div>
+        <article class="flagship-case reveal">
+          <header class="flagship-head"><div><small>ДОСЬЕ № 24—118</small><h3>Квартира стоимостью<br />12,8 млн ₽</h3></div><div class="flagship-verdict"><span>ИТОГ</span><strong>100% актива сохранено</strong></div></header>
+          <div class="flagship-body">
+            <nav class="flagship-nav" aria-label="Этапы дела"><button class="active" data-dossier-stage="risk"><span>01</span> Риск</button><button data-dossier-stage="evidence"><span>02</span> Доказательства</button><button data-dossier-stage="turn"><span>03</span> Перелом</button><button data-dossier-stage="result"><span>04</span> Решение</button></nav>
+            <section class="dossier-scene" aria-live="polite">
+              <div class="dossier-document" aria-hidden="true"><div class="document-top"><span>МАТЕРИАЛЫ ДЕЛА</span><b>КОНФИДЕНЦИАЛЬНО</b></div><div class="document-lines"><i></i><i></i><i></i><i></i><i></i></div><strong id="dossier-stamp">РИСК</strong><small>Обезличенный фрагмент</small></div>
+              <div class="dossier-copy"><small id="dossier-index">ЭТАП 01 / 04</small><h4 id="dossier-title">Претензия на половину квартиры</h4><p id="dossier-text">Оппонент требовал признать объект совместным и выплатить компенсацию, ссылаясь на вложения в период брака.</p><div class="dossier-metric"><span id="dossier-metric-label">ЦЕНА РИСКА</span><strong id="dossier-metric">12,8 млн ₽</strong></div></div>
+            </section>
+          </div>
+        </article>
         <div class="case-stack">
           <article class="case-row reveal"><div class="case-number">01</div><div class="case-content"><span>СЕМЕЙНЫЙ СПОР · 2026</span><h3>Сохранили клиенту квартиру, приобретённую до брака, и отклонили требования на 12,8 млн ₽</h3><p>Доказали раздельный характер вложений и восстановили цепочку платежей за восемь лет.</p></div><div class="case-result"><strong>100%</strong><span>актива сохранено</span><button class="case-toggle" aria-expanded="false">Как мы это сделали <b>+</b></button></div><div class="case-story" hidden><div><small>01 · РИСК</small><strong>Претензия на половину квартиры</strong><p>Оппонент ссылался на общие вложения в период брака и требовал признать объект совместным.</p></div><div><small>02 · АНАЛИЗ</small><strong>Восстановили движение денег</strong><p>Собрали банковские документы, договоры и подтверждения происхождения средств за восемь лет.</p></div><div><small>03 · ПЕРЕЛОМ</small><strong>Разрушили ключевой расчёт</strong><p>Показали двойной учёт платежей и отсутствие связи части расходов с приобретением объекта.</p></div><div><small>04 · РЕЗУЛЬТАТ</small><strong>Требования отклонены</strong><p>Суд сохранил квартиру за клиентом и взыскал с другой стороны часть судебных расходов.</p></div></div></article>
           <article class="case-row reveal"><div class="case-number">02</div><div class="case-content"><span>АРБИТРАЖ · 2025</span><h3>Взыскали задолженность по поставке и договорную неустойку для производственной компании</h3><p>Обеспечительные меры были приняты судом в течение суток после подачи заявления.</p></div><div class="case-result"><strong>9,4 млн ₽</strong><span>взыскано</span><button class="case-toggle" aria-expanded="false">Как мы это сделали <b>+</b></button></div><div class="case-story" hidden><div><small>01 · РИСК</small><strong>Активы начали исчезать</strong><p>После претензии контрагент прекратил связь и начал выводить имущество из компании.</p></div><div><small>02 · АНАЛИЗ</small><strong>Собрали единую цепочку</strong><p>Связали договор, поставки, электронную переписку и частичные платежи в одну доказательную модель.</p></div><div><small>03 · ПЕРЕЛОМ</small><strong>Обеспечили будущий результат</strong><p>Одновременно с иском подали доказательства риска и добились обеспечительных мер.</p></div><div><small>04 · РЕЗУЛЬТАТ</small><strong>Долг и неустойка взысканы</strong><p>Решение удалось исполнить за счёт активов, сохранённых на старте процесса.</p></div></div></article>
@@ -72,7 +115,7 @@
       </section>
 
       <section id="documents" class="documents section-pad">
-        <div class="documents-copy reveal"><p class="kicker"><span>05</span> ПОЛЕЗНЫЕ МАТЕРИАЛЫ</p><h2>Документы,<br /><em>с которых можно начать.</em></h2><p>Базовые формы для типовых ситуаций. Скачайте, заполните черновик и отправьте юристу на проверку перед подачей.</p><button class="text-button" data-open-consult>Проверить документ у юриста ↗</button></div>
+        <div class="documents-copy reveal"><p class="kicker"><span>06</span> ПОЛЕЗНЫЕ МАТЕРИАЛЫ</p><h2>Документы,<br /><em>с которых можно начать.</em></h2><p>Базовые формы для типовых ситуаций. Скачайте, заполните черновик и отправьте юристу на проверку перед подачей.</p><button class="text-button" data-open-consult>Проверить документ у юриста ↗</button></div>
         <div class="document-list reveal">
           <a href="assets/documents/pretrial-claim.txt" download><span class="file-icon">TXT</span><div><strong>Досудебная претензия</strong><small>Универсальный редактируемый шаблон</small></div><b>↓</b></a>
           <a href="assets/documents/statement-of-claim.txt" download><span class="file-icon">TXT</span><div><strong>Исковое заявление</strong><small>Структура и обязательные реквизиты</small></div><b>↓</b></a>
@@ -82,7 +125,7 @@
       </section>
 
       <section id="reviews" class="reviews section-pad">
-        <div class="reviews-head reveal"><div><p class="kicker"><span>06</span> ДОВЕРИЕ</p><h2>Клиенты<br /><em>о нашей работе.</em></h2></div><div class="review-controls"><button data-review-prev aria-label="Предыдущий отзыв">←</button><span><b id="review-current">01</b> / 04</span><button data-review-next aria-label="Следующий отзыв">→</button></div></div>
+        <div class="reviews-head reveal"><div><p class="kicker"><span>07</span> ДОВЕРИЕ</p><h2>Клиенты<br /><em>о нашей работе.</em></h2></div><div class="review-controls"><button data-review-prev aria-label="Предыдущий отзыв">←</button><span><b id="review-current">01</b> / 04</span><button data-review-next aria-label="Следующий отзыв">→</button></div></div>
         <div class="review-stage reveal">
           <article class="review active"><span class="quote">“</span><blockquote>Роман не обещал лёгкой победы, зато уже на первой встрече разложил ситуацию по шагам. В суде оппоненты трижды меняли позицию, а наша оставалась цельной до самого решения.</blockquote><div><strong>Анна К.</strong><span>раздел имущества · Иркутск</span></div></article>
           <article class="review"><span class="quote">“</span><blockquote>Богдан подключился вечером, когда счёт шёл буквально на часы. Спокойно объяснил семье порядок действий и на следующий день уже представлял наши интересы.</blockquote><div><strong>Алексей М.</strong><span>защита руководителя · Ангарск</span></div></article>
@@ -92,10 +135,10 @@
         <p class="legal-note">Имена и отдельные детали изменены для сохранения конфиденциальности.</p>
       </section>
 
-      <section class="principles section-pad"><p class="kicker reveal"><span>07</span> НАШ ПОДХОД</p><div class="principle-quote reveal">Вам не нужен юрист, который говорит сложно.<br />Вам нужен тот, кто <em>делает сложное понятным.</em></div><div class="principle-grid"><div class="reveal"><span>01</span><strong>Прямой прогноз</strong><p>Не продаём надежду. До старта называем риски, сценарии и реалистичный результат.</p></div><div class="reveal"><span>02</span><strong>Партнёр ведёт дело</strong><p>Ключевые решения не передаются случайному исполнителю. Вы знаете, кто отвечает за результат.</p></div><div class="reveal"><span>03</span><strong>Позиция в цифрах</strong><p>Сроки, стоимость и этапы фиксируются заранее. Вы видите прогресс и понимаете следующий шаг.</p></div></div></section>
+      <section class="principles section-pad"><p class="kicker reveal"><span>08</span> НАШ ПОДХОД</p><div class="principle-quote reveal">Вам не нужен юрист, который говорит сложно.<br />Вам нужен тот, кто <em>делает сложное понятным.</em></div><div class="principle-grid"><div class="reveal"><span>01</span><strong>Прямой прогноз</strong><p>Не продаём надежду. До старта называем риски, сценарии и реалистичный результат.</p></div><div class="reveal"><span>02</span><strong>Партнёр ведёт дело</strong><p>Ключевые решения не передаются случайному исполнителю. Вы знаете, кто отвечает за результат.</p></div><div class="reveal"><span>03</span><strong>Позиция в цифрах</strong><p>Сроки, стоимость и этапы фиксируются заранее. Вы видите прогресс и понимаете следующий шаг.</p></div></div></section>
 
       <section id="contact" class="contact section-pad">
-        <div class="contact-copy reveal"><p class="kicker"><span>08</span> СВЯЗАТЬСЯ</p><h2>Начнём<br /><em>с разговора.</em></h2><p>Опишите ситуацию в двух-трёх предложениях. Мы определим, кто из команды лучше подходит для вашей задачи.</p><div class="contact-links"><a href="tel:+79832439690">+7 983 243-96-90</a><a href="mailto:cxsuiemode@gmail.com">cxsuiemode@gmail.com</a><span>Иркутск · консультации по всей России</span></div></div>
+        <div class="contact-copy reveal"><p class="kicker"><span>09</span> СВЯЗАТЬСЯ</p><h2>Начнём<br /><em>с разговора.</em></h2><p>Опишите ситуацию в двух-трёх предложениях. Мы определим, кто из команды лучше подходит для вашей задачи.</p><div class="contact-links"><a href="tel:+79832439690">+7 983 243-96-90</a><a href="mailto:cxsuiemode@gmail.com">cxsuiemode@gmail.com</a><span>Иркутск · консультации по всей России</span></div></div>
         <form class="contact-form reveal" id="contact-form"><div class="field"><label for="contact-name">Имя</label><input id="contact-name" name="name" required placeholder="Как к вам обращаться" /></div><div class="field"><label for="contact-phone">Телефон</label><input id="contact-phone" name="phone" type="tel" required placeholder="+7 ___ ___-__-__" /></div><div class="field"><label for="contact-topic">Тема</label><select id="contact-topic" name="topic"><option>Семейный спор</option><option>Гражданское дело</option><option>Защита бизнеса</option><option>Административное дело</option><option>Другое</option></select></div><div class="field"><label for="contact-message">Коротко о ситуации</label><textarea id="contact-message" name="message" placeholder="Что произошло?"></textarea></div><button class="button button-acid" type="submit">Подготовить обращение <span>↗</span></button><small>После нажатия откроется письмо на адрес фирмы. Отправка происходит через вашу почтовую программу.</small></form>
       </section>
     </main>
@@ -138,6 +181,6 @@
 
     <nav class="mobile-action-bar" aria-label="Быстрые действия"><a href="tel:+79832439690"><span>⌕</span> Позвонить</a><button data-open-match><span>◇</span> Подбор</button><button data-open-chat><span>□</span> Помощник</button></nav>
 
-    <script src="script.js?v=20260904-2"></script>
+    <script src="script.js?v=20260904-3"></script>
   </body>
 </html>

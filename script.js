@@ -4,15 +4,15 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 const navigationEntry = performance.getEntriesByType?.("navigation")[0];
 const shouldResetScroll = navigationEntry?.type === "reload" || !window.location.hash;
-function resetScrollPosition() {
-  if (shouldResetScroll) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-}
-resetScrollPosition();
-window.addEventListener("pageshow", () => {
-  window.requestAnimationFrame(resetScrollPosition);
-  window.setTimeout(resetScrollPosition, 80);
+if (shouldResetScroll) window.scrollTo(0, 0);
+window.requestAnimationFrame(() => {
+  document.documentElement.classList.remove("page-booting");
+  document.documentElement.classList.add("page-ready");
 });
-window.addEventListener("beforeunload", resetScrollPosition);
+window.addEventListener("beforeunload", () => {
+  document.documentElement.style.scrollBehavior = "auto";
+  if (shouldResetScroll) window.scrollTo(0, 0);
+});
 
 const siteIntro = document.querySelector(".site-intro");
 if (siteIntro) {
@@ -114,6 +114,82 @@ document.querySelectorAll(".practice-tab").forEach((tab) => tab.addEventListener
     panel.hidden = !selected;
     panel.classList.toggle("active", selected);
   });
+}));
+
+const strategyState = { area: "", stage: "", goal: "" };
+const strategyProfiles = { family: "roman", property: "mikhail", business: "konstantin", public: "igor" };
+const strategyNames = { roman: "Роман Мишин", mikhail: "Михаил Попов", konstantin: "Константин Воробьёв", igor: "Игорь Черниговский", bogdan: "Богдан Беляев" };
+const strategyEvidence = {
+  family: "Свидетельства, соглашения, сведения об имуществе и переписку",
+  property: "Выписку ЕГРН, договоры, платежи и историю перехода права",
+  business: "Договор, первичные документы, переписку и расчёт требований",
+  public: "Решение органа, материалы проверки и подтверждение даты получения"
+};
+const strategySteps = {
+  early: "Зафиксировать факты и проверить слабые места до первого действия",
+  document: "Записать дату получения и определить срок для ответа или жалобы",
+  court: "Собрать материалы дела и выстроить единую доказательную позицию",
+  urgent: "Не давать объяснений наугад и немедленно связаться с защитником"
+};
+
+function updateStrategyRoom() {
+  const completed = Object.values(strategyState).filter(Boolean).length;
+  document.querySelector("#strategy-status").textContent = `${completed} / 3`;
+  if (completed < 3) return;
+  let lawyerKey = strategyProfiles[strategyState.area];
+  if (strategyState.stage === "urgent" && strategyState.area === "business") lawyerKey = "bogdan";
+  const riskMap = { early: ["УМЕРЕННЫЙ", 38], document: ["ПОВЫШЕННЫЙ", 62], court: ["ВЫСОКИЙ", 78], urgent: ["КРИТИЧЕСКИЙ", 94] };
+  const [riskLabel, riskLevel] = riskMap[strategyState.stage];
+  const goalSuffix = {
+    protect: "; приоритет — сохранить текущее положение",
+    recover: "; отдельно подготовить расчёт и доказательства исполнения",
+    negotiate: "; определить границы допустимого соглашения",
+    appeal: "; проверить основания и процессуальный срок обжалования"
+  }[strategyState.goal];
+  document.querySelector("#strategy-risk").textContent = riskLabel;
+  document.querySelector("#strategy-risk-bar").style.setProperty("--risk-level", `${riskLevel}%`);
+  document.querySelector("#strategy-step").textContent = strategySteps[strategyState.stage] + goalSuffix;
+  document.querySelector("#strategy-evidence").textContent = strategyEvidence[strategyState.area];
+  document.querySelector("#strategy-lawyer").textContent = strategyNames[lawyerKey];
+  const profileButton = document.querySelector("#strategy-profile");
+  profileButton.disabled = false;
+  profileButton.dataset.profileKey = lawyerKey;
+  document.querySelector(".strategy-contact").disabled = false;
+}
+
+document.querySelectorAll("[data-strategy-area], [data-strategy-stage], [data-strategy-goal]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const group = button.hasAttribute("data-strategy-area") ? "area" : button.hasAttribute("data-strategy-stage") ? "stage" : "goal";
+    const value = button.dataset[`strategy${group[0].toUpperCase()}${group.slice(1)}`];
+    strategyState[group] = value;
+    document.querySelectorAll(`[data-strategy-${group}]`).forEach((item) => item.classList.toggle("active", item === button));
+    updateStrategyRoom();
+  });
+});
+document.querySelector("#strategy-profile").addEventListener("click", (event) => {
+  if (event.currentTarget.dataset.profileKey) openProfile(event.currentTarget.dataset.profileKey);
+});
+
+const dossierStages = {
+  risk: { index: "ЭТАП 01 / 04", stamp: "РИСК", title: "Претензия на половину квартиры", text: "Оппонент требовал признать объект совместным и выплатить компенсацию, ссылаясь на вложения в период брака.", metricLabel: "ЦЕНА РИСКА", metric: "12,8 млн ₽" },
+  evidence: { index: "ЭТАП 02 / 04", stamp: "ФАКТЫ", title: "Восемь лет движения денег", text: "Мы восстановили источник каждого крупного платежа, связали банковские выписки с договорами и отделили личные средства клиента от общих расходов.", metricLabel: "ИЗУЧЕНО", metric: "146 документов" },
+  turn: { index: "ЭТАП 03 / 04", stamp: "ПЕРЕЛОМ", title: "Двойной учёт разрушил расчёт", text: "В модели другой стороны одни и те же вложения учитывались дважды. После сопоставления дат и сумм ключевое доказательство потеряло силу.", metricLabel: "КЛЮЧЕВОЙ ФАКТ", metric: "1 ошибка в расчёте" },
+  result: { index: "ЭТАП 04 / 04", stamp: "РЕШЕНО", title: "Требования полностью отклонены", text: "Суд признал раздельный характер приобретения. Квартира осталась у клиента, а с другой стороны взыскали часть судебных расходов.", metricLabel: "РЕЗУЛЬТАТ", metric: "100% актива" }
+};
+const dossierScene = document.querySelector(".dossier-scene");
+document.querySelectorAll("[data-dossier-stage]").forEach((button) => button.addEventListener("click", () => {
+  const data = dossierStages[button.dataset.dossierStage];
+  document.querySelectorAll("[data-dossier-stage]").forEach((item) => item.classList.toggle("active", item === button));
+  dossierScene.classList.add("changing");
+  window.setTimeout(() => {
+    document.querySelector("#dossier-index").textContent = data.index;
+    document.querySelector("#dossier-stamp").textContent = data.stamp;
+    document.querySelector("#dossier-title").textContent = data.title;
+    document.querySelector("#dossier-text").textContent = data.text;
+    document.querySelector("#dossier-metric-label").textContent = data.metricLabel;
+    document.querySelector("#dossier-metric").textContent = data.metric;
+    dossierScene.classList.remove("changing");
+  }, 140);
 }));
 
 document.querySelectorAll(".case-toggle").forEach((button) => button.addEventListener("click", () => {
