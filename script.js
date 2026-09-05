@@ -1,6 +1,7 @@
 const body = document.body;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const isMobileViewport = window.matchMedia("(max-width: 760px)").matches;
+const scrollResetDuration = isMobileViewport ? 2600 : 2200;
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 const navigationEntry = performance.getEntriesByType?.("navigation")[0];
@@ -13,7 +14,7 @@ function forceScrollTop() {
 }
 if (shouldResetScroll) {
   forceScrollTop();
-  const resetDelays = isMobileViewport ? [0, 40, 120, 280, 560, 900, 1300, 1700] : [0, 40, 120, 280, 560, 900];
+  const resetDelays = isMobileViewport ? [0, 40, 120, 280, 560, 900, 1300, 1700, 2200, 2500] : [0, 40, 120, 280, 560, 900, 1300, 1800, 2100];
   resetDelays.forEach((delay) => window.setTimeout(forceScrollTop, delay));
   window.addEventListener("DOMContentLoaded", forceScrollTop, { once: true });
   window.addEventListener("load", () => {
@@ -27,9 +28,13 @@ if (shouldResetScroll) {
   });
   window.setTimeout(() => {
     forceScrollTop();
-    document.documentElement.style.scrollBehavior = "";
-    document.documentElement.classList.remove("scroll-resetting");
-  }, isMobileViewport ? 1950 : 1040);
+    window.requestAnimationFrame(() => {
+      forceScrollTop();
+      document.documentElement.style.scrollBehavior = "";
+      document.documentElement.classList.remove("scroll-resetting");
+      window.setTimeout(forceScrollTop, 80);
+    });
+  }, scrollResetDuration);
 }
 window.requestAnimationFrame(() => {
   document.documentElement.classList.remove("page-booting");
@@ -51,7 +56,7 @@ if (siteIntro) {
     window.setTimeout(() => {
       siteIntro.classList.add("hidden");
       try { sessionStorage.setItem("podkinuli-intro-seen", "1"); } catch (_) { /* storage may be disabled */ }
-    }, prefersReducedMotion ? 320 : shouldResetScroll ? (isMobileViewport ? 2050 : 1150) : 1650);
+    }, prefersReducedMotion ? 320 : shouldResetScroll ? scrollResetDuration + 100 : 1650);
   }
 }
 

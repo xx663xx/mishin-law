@@ -25,6 +25,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .noise { position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: .055; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E"); }
 .site-intro { position: fixed; z-index: 100; inset: 0; background: #080a09; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity .65s cubic-bezier(.65,0,.35,1), visibility .65s; }
 .site-intro.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+html.scroll-resetting, html.scroll-resetting body { scroll-behavior: auto !important; }
+html.scroll-resetting body { position: fixed; inset: 0; width: 100%; height: 100dvh; overflow: hidden; }
 .intro-mark { width: 88px; height: 102px; border: 1px solid #777069; display: grid; place-items: center; font: 50px/1 var(--serif); color: var(--text); animation: introMark .8s cubic-bezier(.2,.8,.2,1) both; }
 .site-intro p { margin: 24px 0 15px; font-size: 12px; letter-spacing: .21em; font-weight: 700; }
 .site-intro p span { color: var(--acid); }
