@@ -10,12 +10,15 @@
       document.documentElement.classList.add("page-booting");
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
       const navigation = performance.getEntriesByType?.("navigation")[0];
-      if (navigation?.type === "reload" || !location.hash) scrollTo(0, 0);
+      if (navigation?.type === "reload" || !location.hash) {
+        document.documentElement.classList.add("scroll-resetting");
+        scrollTo(0, 0);
+      }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Prata&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260904-4" />
+    <link rel="stylesheet" href="styles.css?v=20260905-1" />
   </head>
   <body>
     <div class="noise" aria-hidden="true"></div>
@@ -181,6 +184,6 @@
 
     <nav class="mobile-action-bar" aria-label="Быстрые действия"><a href="tel:+79832439690"><span>⌕</span> Позвонить</a><button data-open-match><span>◇</span> Подбор</button><button data-open-chat><span>□</span> Помощник</button></nav>
 
-    <script src="script.js?v=20260904-5"></script>
+    <script src="script.js?v=20260905-1"></script>
   </body>
 </html>

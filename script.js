@@ -1,5 +1,6 @@
 const body = document.body;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isMobileViewport = window.matchMedia("(max-width: 760px)").matches;
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 const navigationEntry = performance.getEntriesByType?.("navigation")[0];
@@ -12,7 +13,9 @@ function forceScrollTop() {
 }
 if (shouldResetScroll) {
   forceScrollTop();
-  [0, 40, 120, 280, 560, 900].forEach((delay) => window.setTimeout(forceScrollTop, delay));
+  const resetDelays = isMobileViewport ? [0, 40, 120, 280, 560, 900, 1300, 1700] : [0, 40, 120, 280, 560, 900];
+  resetDelays.forEach((delay) => window.setTimeout(forceScrollTop, delay));
+  window.addEventListener("DOMContentLoaded", forceScrollTop, { once: true });
   window.addEventListener("load", () => {
     forceScrollTop();
     window.requestAnimationFrame(forceScrollTop);
@@ -25,7 +28,8 @@ if (shouldResetScroll) {
   window.setTimeout(() => {
     forceScrollTop();
     document.documentElement.style.scrollBehavior = "";
-  }, 1040);
+    document.documentElement.classList.remove("scroll-resetting");
+  }, isMobileViewport ? 1950 : 1040);
 }
 window.requestAnimationFrame(() => {
   document.documentElement.classList.remove("page-booting");
@@ -47,7 +51,7 @@ if (siteIntro) {
     window.setTimeout(() => {
       siteIntro.classList.add("hidden");
       try { sessionStorage.setItem("podkinuli-intro-seen", "1"); } catch (_) { /* storage may be disabled */ }
-    }, prefersReducedMotion ? 320 : shouldResetScroll ? 1150 : 1650);
+    }, prefersReducedMotion ? 320 : shouldResetScroll ? (isMobileViewport ? 2050 : 1150) : 1650);
   }
 }
 
@@ -360,7 +364,8 @@ function updateMatcherChrome() {
   const displayStep = Math.min(matcherState.step + 1, matcherSteps.length);
   document.querySelector("#matcher-count").textContent = String(displayStep).padStart(2, "0");
   document.querySelectorAll(".matcher-progress i").forEach((bar, index) => bar.classList.toggle("active", index <= matcherState.step));
-  matcherBack.hidden = matcherState.step === 0;
+  matcherBack.hidden = false;
+  matcherBack.textContent = matcherState.step === 0 ? "← К сайту" : "← Назад";
 }
 
 function chooseMatchedLawyer() {
@@ -477,6 +482,10 @@ function closeMatcher() {
   syncBodyLock();
 }
 matcherBack.addEventListener("click", () => {
+  if (matcherState.step === 0) {
+    closeMatcher();
+    return;
+  }
   matcherState.step = Math.max(0, matcherState.step - 1);
   renderMatcherStep();
 });
@@ -816,7 +825,14 @@ phoneInput.addEventListener("blur", () => {
   updatePhoneValidity();
 });
 phoneInput.addEventListener("keydown", (event) => {
-  if ((event.key === "Backspace" || event.key === "Delete") && phoneInput.selectionStart <= 2 && phoneInput.selectionEnd <= 2) event.preventDefault();
+  if (event.key !== "Backspace" && event.key !== "Delete") return;
+  event.preventDefault();
+  const subscriber = normalizePhone(phoneInput.value).slice(1);
+  if (!subscriber) return;
+  phoneInput.value = formatPhone(`7${subscriber.slice(0, -1)}`);
+  phoneTouched = phoneInput.value.length > 2;
+  updatePhoneValidity();
+  window.requestAnimationFrame(() => phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length));
 });
 
 function setTopicPickerOpen(open) {
