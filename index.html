@@ -4,155 +4,266 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Подкинули — юридическая фирма в Иркутске. Судебная защита, семейные, гражданские, административные и корпоративные споры." />
-    <meta name="theme-color" content="#080a09" />
+    <meta name="theme-color" content="#171816" />
     <title>Подкинули — юридическая фирма</title>
-    <script>
-      document.documentElement.classList.add("page-booting");
-      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-      const navigation = performance.getEntriesByType?.("navigation")[0];
-      if (navigation?.type === "reload" || !location.hash) {
-        document.documentElement.classList.add("scroll-resetting");
-        scrollTo(0, 0);
-      }
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Prata&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260905-2" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20261119-14" />
   </head>
-  <body>
-    <div class="noise" aria-hidden="true"></div>
-    <div class="site-intro" aria-hidden="true"><div class="intro-mark">П</div><p>ПОДКИНУЛИ <span>·</span> ЮРИДИЧЕСКАЯ ФИРМА</p><div class="intro-line"><i></i></div><small>ФОРМИРУЕМ ПОЗИЦИЮ</small></div>
-    <header class="header">
-      <a class="brand" href="#top" aria-label="Подкинули — на главную"><span class="brand-symbol">П</span><span class="brand-name">ПОДКИНУЛИ<small>ЮРИДИЧЕСКАЯ ФИРМА</small></span></a>
-      <nav class="nav" aria-label="Основная навигация"><a href="#practice">Практики</a><a href="#strategy">Стратегия</a><a href="#team">Команда</a><a href="#cases">Досье</a><a href="#reviews">Отзывы</a></nav>
-      <button class="urgent-trigger" data-open-urgent><span></span> Срочная помощь</button>
+  <body class="near-hero">
+    <a class="skip-link" href="#top">К содержанию</a>
+    <header class="header masthead">
+      <a class="brand" href="#top" aria-label="Подкинули – на главную"><span class="firm-monogram" aria-hidden="true"><i></i></span><span class="firm-wordmark">Подкинули<small>Юридическая фирма</small></span></a>
+      <button class="menu-button" type="button" aria-controls="main-nav" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
+      <nav id="main-nav" class="nav" aria-label="Основная навигация">
+        <a href="#practice">Практики</a><a href="#cases">Досье</a><a href="#team">Команда</a><a href="#strategy">Подготовка</a>
+        <a class="nav-contact" href="#contact">Консультация</a>
+      </nav>
+      <button class="urgent-trigger" type="button" data-open-urgent><span aria-hidden="true"></span>Срочная помощь</button>
       <a class="header-phone" href="tel:+79832439690">+7 983 243-96-90</a>
-      <button class="menu-button" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
+      <a class="header-contact" href="#contact">Консультация</a>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-orbit" aria-hidden="true"><span></span><i></i></div>
-        <p class="hero-watermark" aria-hidden="true">ПОЗИЦИЯ</p>
-        <div class="hero-copy reveal" data-hero-copy><p class="kicker"><span>01</span> ЮРИДИЧЕСКАЯ ФИРМА · ИРКУТСК</p><h1>Сложные дела.<br /><em>Ясная позиция.</em></h1><p class="hero-lead">Защищаем людей и бизнес в ситуациях, где цена ошибки слишком высока. Вникаем в детали, говорим прямо, ведём дело до результата.</p><div class="hero-actions"><button class="button button-acid" data-open-match>Разобрать мою ситуацию <span>↗</span></button><a class="button-link" href="#team">Выбрать юриста <span>↓</span></a></div></div>
-        <div class="hero-portrait" data-hero-portrait><div class="portrait-index">01 / 05</div><div class="hero-photo-frame"><img src="assets/images/roman-mishin.png" alt="Роман Мишин, управляющий партнёр" /></div><div class="hero-caption"><div><b>Роман Мишин</b><span>Управляющий партнёр</span></div><span class="vertical-word">ПОДКИНУЛИ</span></div></div>
-        <div class="hero-stats reveal"><div><strong>15+</strong><span>лет судебной<br />практики</span></div><div><strong>800+</strong><span>судебных<br />заседаний</span></div><div><strong>24/7</strong><span>экстренная<br />связь</span></div></div>
-        <a class="hero-scroll" href="#practice"><span>ПРОКРУТИТЕ</span><i></i></a>
+    <main id="top" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-main">
+          <div class="hero-copy">
+            <p class="kicker">Юридическая фирма <span></span> Иркутск</p>
+            <h1 id="hero-title"><span><b>Судебная</b></span><span><em>практика</em></span></h1>
+            <p class="hero-lead">Представляем людей и бизнес в переговорах и в суде.</p>
+            <div class="hero-primary">
+              <button type="button" class="button" data-route-stage="" aria-haspopup="dialog">Разобрать ситуацию<span class="ui-icon" data-icon="discussion" aria-hidden="true"></span></button>
+              <a href="tel:+79832439690">Позвонить</a>
+            </div>
+          </div>
+          <div class="imprint-stage" aria-hidden="true">
+            <canvas id="imprint"></canvas>
+          </div>
+        </div>
+        <div class="hero-baseline">
+          <a href="#practice"><span class="scroll-cue" aria-hidden="true"></span>Наши практики</a>
+          <span class="baseline-rule" aria-hidden="true"></span>
+          <button class="imprint-toggle" type="button" aria-label="Приостановить анимацию" hidden><i aria-hidden="true"></i></button>
+        </div>
       </section>
-
-      <section class="marquee" aria-label="Направления работы"><div>СУДЕБНЫЕ СПОРЫ <i>✦</i> СЕМЕЙНОЕ ПРАВО <i>✦</i> ЗАЩИТА БИЗНЕСА <i>✦</i> НАСЛЕДСТВО <i>✦</i> АДМИНИСТРАТИВНЫЕ ДЕЛА <i>✦</i></div></section>
 
       <section id="practice" class="practice section-pad">
-        <div class="section-heading reveal"><p class="kicker"><span>02</span> ПРАКТИКИ</p><h2>Знаем, где искать<br /><em>точку опоры.</em></h2></div>
+        <div class="section-heading reveal"><h2>Практики</h2></div>
         <div class="practice-tabs reveal" role="tablist" aria-label="Юридические практики"><button class="practice-tab active" data-practice="people" role="tab" aria-selected="true">Частным лицам</button><button class="practice-tab" data-practice="business" role="tab" aria-selected="false">Бизнесу</button></div>
         <div class="practice-panel active" data-practice-panel="people">
-          <a href="#contact" class="practice-item reveal"><span>01</span><h3>Семейные споры</h3><p>Развод, раздел имущества, алименты, споры о детях и брачные договоры.</p><b>↗</b></a>
-          <a href="#contact" class="practice-item reveal"><span>02</span><h3>Недвижимость</h3><p>Право собственности, сделки, выселение, доли и споры с застройщиками.</p><b>↗</b></a>
-          <a href="#contact" class="practice-item reveal"><span>03</span><h3>Наследство</h3><p>Восстановление сроков, оспаривание завещаний и раздел наследственной массы.</p><b>↗</b></a>
-          <a href="#contact" class="practice-item reveal"><span>04</span><h3>Административные дела</h3><p>Обжалование решений ведомств, штрафов и действий должностных лиц.</p><b>↗</b></a>
+          <a href="#contact" class="practice-item reveal"><span>01</span><h3>Семейные споры</h3><p>Развод, раздел имущества, алименты, споры о детях и брачные договоры.</p><span class="ui-icon" data-icon="discussion" aria-hidden="true"></span></a>
+          <a href="#contact" class="practice-item reveal"><span>02</span><h3>Недвижимость</h3><p>Право собственности, сделки, выселение, доли и споры с застройщиками.</p><span class="ui-icon" data-icon="discussion" aria-hidden="true"></span></a>
+          <a href="#contact" class="practice-item reveal"><span>03</span><h3>Наследство</h3><p>Восстановление сроков, оспаривание завещаний и раздел наследственной массы.</p><span class="ui-icon" data-icon="discussion" aria-hidden="true"></span></a>
+          <a href="#contact" class="practice-item reveal"><span>04</span><h3>Административные дела</h3><p>Обжалование решений ведомств, штрафов и действий должностных лиц.</p><span class="ui-icon" data-icon="discussion" aria-hidden="true"></span></a>
         </div>
         <div class="practice-panel" data-practice-panel="business" hidden>
-          <a href="#contact" class="practice-item"><span>01</span><h3>Арбитражные споры</h3><p>Договорные конфликты, взыскание задолженности и защита активов.</p><b>↗</b></a>
-          <a href="#contact" class="practice-item"><span>02</span><h3>Корпоративные конфликты</h3><p>Споры участников, защита руководителей и сопровождение переговоров.</p><b>↗</b></a>
-          <a href="#contact" class="practice-item"><span>03</span><h3>Налоговые споры</h3><p>Сопровождение проверок, возражения и оспаривание доначислений.</p><b>↗</b></a>
-          <a href="#contact" class="practice-item"><span>04</span><h3>Договорная работа</h3><p>Аудит рисков, подготовка контрактов и претензионная работа.</p><b>↗</b></a>
+          <a href="#contact" class="practice-item"><span>01</span><h3>Арбитражные споры</h3><p>Договорные конфликты, взыскание задолженности и защита активов.</p><span class="ui-icon" data-icon="discussion" aria-hidden="true"></span></a>
+          <a href="#contact" class="practice-item"><span>02</span><h3>Корпоративные конфликты</h3><p>Споры участников, защита руководителей и сопровождение переговоров.</p><span class="ui-icon" data-icon="discussion" aria-hidden="true"></span></a>
+          <a href="#contact" class="practice-item"><span>03</span><h3>Налоговые споры</h3><p>Сопровождение проверок, возражения и оспаривание доначислений.</p><span class="ui-icon" data-icon="discussion" aria-hidden="true"></span></a>
+          <a href="#contact" class="practice-item"><span>04</span><h3>Договорная работа</h3><p>Аудит рисков, подготовка контрактов и претензионная работа.</p><span class="ui-icon" data-icon="discussion" aria-hidden="true"></span></a>
         </div>
       </section>
 
-      <div class="chapter-break" aria-hidden="true"><span>КОНФЛИКТ</span><i>→</i><span>ПОЗИЦИЯ</span><b>03</b></div>
 
-      <section id="strategy" class="strategy-room section-pad">
-        <header class="strategy-head reveal"><div><p class="kicker"><span>03</span> СТРАТЕГИЧЕСКАЯ КОМНАТА</p><h2>Соберите контур<br /><em>своего дела.</em></h2></div><p>Три решения превращают неопределённость в первичную карту: уровень риска, ближайший шаг, документы и специалист.</p></header>
-        <div class="strategy-workspace reveal">
-          <div class="strategy-controls">
-            <div class="strategy-question"><span>01</span><div><strong>Тип конфликта</strong><div class="strategy-options"><button data-strategy-area="family">Семья</button><button data-strategy-area="property">Имущество</button><button data-strategy-area="business">Бизнес</button><button data-strategy-area="public">Ведомство</button></div></div></div>
-            <div class="strategy-question"><span>02</span><div><strong>Стадия</strong><div class="strategy-options"><button data-strategy-stage="early">Оцениваю риск</button><button data-strategy-stage="document">Получен документ</button><button data-strategy-stage="court">Уже в суде</button><button data-strategy-stage="urgent">Нужно сегодня</button></div></div></div>
-            <div class="strategy-question"><span>03</span><div><strong>Задача</strong><div class="strategy-options"><button data-strategy-goal="protect">Защитить</button><button data-strategy-goal="recover">Взыскать</button><button data-strategy-goal="negotiate">Договориться</button><button data-strategy-goal="appeal">Обжаловать</button></div></div></div>
+
+
+
+      <section id="cases" class="cases section-pad">
+        <article class="flagship-case" aria-labelledby="flagship-title">
+          <header class="flagship-head has-model" id="case-cover">
+            <p class="kicker">Иллюстративное досье · Семейный спор</p>
+            <h2 id="flagship-title">Квартира<br />на кону.</h2>
+            <p class="case-deck">Как один перевод дважды попал в расчет при разделе имущества.</p>
+            <button class="case-open button" type="button" aria-controls="case-workbench" aria-expanded="false">Открыть досье <span class="ui-icon" data-icon="folder" aria-hidden="true"></span></button>
+            <div class="apartment-model">
+              <img src="assets/images/apartment-cutaway.webp" alt="" loading="lazy" decoding="async">
+              <canvas aria-hidden="true"></canvas>
+            </div>
+          </header>
+          <div id="case-workbench" class="case-workbench" hidden>
+            <header class="case-workbench-head">
+              <div><p class="kicker">Иллюстративное досье · Семейный спор</p><h3 tabindex="-1">Квартира на кону</h3></div>
+              <button type="button" class="case-close">Закрыть досье <span class="ui-icon" data-icon="close" aria-hidden="true"></span></button>
+            </header>
+            <div class="flagship-nav" role="group" aria-label="Этапы дела">
+              <button type="button" data-dossier-stage="risk" aria-pressed="true"><span>01</span> Претензия</button>
+              <button type="button" data-dossier-stage="evidence" aria-pressed="false"><span>02</span> Документы</button>
+              <button type="button" data-dossier-stage="turn" aria-pressed="false"><span>03</span> Перелом</button>
+              <button type="button" data-dossier-stage="result" aria-pressed="false"><span>04</span> Решение</button>
+            </div>
+            <div class="dossier-scene">
+              <div class="dossier-copy">
+                <small id="dossier-index">Этап 01 / 04</small>
+                <h4 id="dossier-title">Квартиру хотят признать общей</h4>
+                <p id="dossier-text">Другая сторона ссылалась на вложения в квартиру в период брака.</p>
+                <div class="evidence-note" id="dossier-note" role="status">Откройте один из фрагментов, чтобы увидеть, что проверял юрист.</div>
+              </div>
+              <div class="evidence-board">
+                <div class="board-label"><span>Материалы дела</span><span>Схема</span></div>
+                <div class="evidence-stack">
+                  <div id="dossier-materials"></div>
+                  <svg class="evidence-thread" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <g class="thread-stacked"><path pathLength="1" d="M 83,19 C 98,19 98,28 98,43 L 98,62 C 98,75 95,81 86,81" /><circle cx="83" cy="19" r="0.9"/><circle cx="86" cy="81" r="0.9"/></g>
+                    <g class="thread-spread"><path pathLength="1" d="M 38,64 C 55,64 45,81 62,81" /><circle cx="38" cy="64" r="0.8"/><circle cx="62" cy="81" r="0.8"/></g>
+                  </svg>
+                </div>
+                <div class="dossier-chronology" hidden>
+                  <button type="button" id="chronology-note" aria-pressed="false">Сводная хронология</button>
+                  <ol aria-label="Последовательность событий">
+                    <li><small>До брака</small><strong>Покупка</strong></li>
+                    <li><small>В браке</small><strong>Перевод</strong></li>
+                    <li><small>После претензии</small><strong>Сверка</strong></li>
+                  </ol>
+                  <p class="evidence-inline-note chronology-inline" hidden></p>
+                </div>
+              </div>
+
+            </div>
+            <footer class="case-footer">
+              <div><small>Итог в примере</small><strong>Квартира осталась у клиента</strong></div>
+              <button type="button" class="case-next">К документам <span class="ui-icon" data-icon="next" aria-hidden="true"></span></button>
+            </footer>
           </div>
-          <aside class="strategy-output" aria-live="polite">
-            <div class="strategy-output-top"><small>ПЕРВИЧНАЯ КАРТА</small><span id="strategy-status">0 / 3</span></div>
-            <div class="strategy-risk"><span>УРОВЕНЬ РИСКА</span><strong id="strategy-risk">—</strong><i id="strategy-risk-bar"></i></div>
-            <div class="strategy-line"><small>ПЕРВЫЙ ШАГ</small><strong id="strategy-step">Выберите три параметра слева</strong></div>
-            <div class="strategy-line"><small>ЧТО ПОДГОТОВИТЬ</small><strong id="strategy-evidence">Документы появятся после выбора</strong></div>
-            <div class="strategy-lawyer"><div><small>СПЕЦИАЛИСТ</small><strong id="strategy-lawyer">Определяется</strong></div><button id="strategy-profile" type="button" disabled>Профиль ↗</button></div>
-            <button class="strategy-contact" data-open-consult disabled>Обсудить эту карту <span>↗</span></button>
-          </aside>
+        </article>
+        <details class="case-more"><summary>Другие примеры работы</summary>
+        <div class="case-more-body">
+        <div class="case-stack">
+          <article class="case-row reveal"><div class="case-number" aria-hidden="true">01</div><div class="case-content"><span>АРБИТРАЖ · 2025</span><h3>Взыскали задолженность по поставке и договорную неустойку для производственной компании</h3><p>Обеспечительные меры были приняты судом в течение суток после подачи заявления.</p></div><div class="case-result"><strong>9,4 млн ₽</strong><span>взыскано</span><button class="case-toggle" aria-expanded="false">Как мы это сделали <span class="ui-icon" data-icon="expand" aria-hidden="true"></span></button></div><div class="case-story" hidden><div><small>01 · РИСК</small><strong>Активы начали исчезать</strong><p>После претензии контрагент прекратил связь и начал выводить имущество из компании.</p></div><div><small>02 · АНАЛИЗ</small><strong>Собрали единую цепочку</strong><p>Связали договор, поставки, электронную переписку и частичные платежи в одну доказательную модель.</p></div><div><small>03 · ПЕРЕЛОМ</small><strong>Обеспечили будущий результат</strong><p>Одновременно с иском подали доказательства риска и добились обеспечительных мер.</p></div><div><small>04 · РЕЗУЛЬТАТ</small><strong>Долг и неустойка взысканы</strong><p>Решение удалось исполнить за счёт активов, сохранённых на старте процесса.</p></div></div></article>
+          <article class="case-row reveal"><div class="case-number" aria-hidden="true">02</div><div class="case-content"><span>АДМИНИСТРАТИВНОЕ ДЕЛО · 2025</span><h3>Отменили незаконное решение ведомства до вступления санкций в силу</h3><p>Сформировали доказательную позицию и добились прекращения производства.</p></div><div class="case-result"><strong>14 дней</strong><span>до решения</span><button class="case-toggle" aria-expanded="false">Как мы это сделали <span class="ui-icon" data-icon="expand" aria-hidden="true"></span></button></div><div class="case-story" hidden><div><small>01 · РИСК</small><strong>Остановка деятельности</strong><p>Постановление создавало угрозу приостановки работы и расторжения ключевых контрактов.</p></div><div><small>02 · АНАЛИЗ</small><strong>Нашли процессуальный разрыв</strong><p>Сопоставили акт проверки, протокол и материалы ведомства, выявив противоречия в датах.</p></div><div><small>03 · ПЕРЕЛОМ</small><strong>Потребовали исходные данные</strong><p>После раскрытия первичных материалов стало ясно, что вывод ведомства не подтверждён.</p></div><div><small>04 · РЕЗУЛЬТАТ</small><strong>Производство прекращено</strong><p>Санкции не вступили в силу, компания продолжила работу без остановки.</p></div></div></article>
         </div>
-        <p class="strategy-note">Карта показывает общий маршрут и не заменяет анализ документов юристом.</p>
+        <p class="legal-note">Информация приведена как пример оформления сайта. Результат всегда зависит от обстоятельств конкретного дела.</p>
+        </div>
+        </details>
       </section>
-
-      <div class="chapter-break chapter-break-dark" aria-hidden="true"><span>ЛЮДИ</span><i>→</i><span>РЕШЕНИЯ</span><b>04</b></div>
 
       <section id="team" class="team section-pad">
-        <div class="team-top reveal"><div class="section-heading"><p class="kicker"><span>04</span> ЛЮДИ ФИРМЫ</p><h2>Нужный опыт<br /><em>для вашей задачи.</em></h2></div><div class="team-search"><label for="lawyer-search">Найти специалиста</label><div><input id="lawyer-search" type="search" placeholder="Имя или направление" /><span>⌕</span></div><button class="match-inline" data-open-match>Не знаете, кого выбрать? Подберём за минуту →</button></div></div>
+        <div class="team-top reveal"><div class="section-heading"><h2>Команда</h2></div><div class="team-search"><label for="lawyer-search">Найти специалиста</label><div><input id="lawyer-search" type="search" placeholder="Имя или направление" /><span class="ui-icon" data-icon="search" aria-hidden="true"></span></div></div></div>
         <div class="team-grid">
-          <article class="lawyer-card reveal" data-name="Роман Мишин семейные гражданские судебные споры"><button class="lawyer-open" data-lawyer="roman" aria-label="Открыть профиль Романа Мишина"><span class="lawyer-photo"><img src="assets/images/roman-mishin.png" alt="Роман Артурович Мишин" /></span><span class="lawyer-info"><small>УПРАВЛЯЮЩИЙ ПАРТНЁР</small><strong>Роман Артурович<br />Мишин</strong><em>Семейные и гражданские споры</em><i>Открыть профиль ↗</i></span></button></article>
-          <article class="lawyer-card reveal" data-name="Богдан Беляев уголовное право защита бизнеса"><button class="lawyer-open" data-lawyer="bogdan" aria-label="Открыть профиль Богдана Беляева"><span class="lawyer-photo"><img src="assets/images/bogdan-belyaev.png" alt="Беляев Богдан Денисович" /></span><span class="lawyer-info"><small>ПАРТНЁР</small><strong>Беляев Богдан<br />Денисович</strong><em>Уголовно-правовая защита бизнеса</em><i>Открыть профиль ↗</i></span></button></article>
-          <article class="lawyer-card reveal" data-name="Константин Воробьёв арбитраж корпоративные споры договоры"><button class="lawyer-open" data-lawyer="konstantin" aria-label="Открыть профиль Константина Воробьёва"><span class="lawyer-photo"><img src="assets/images/konstantin-vorobyev.png" alt="Воробьёв Константин Дмитриевич" /></span><span class="lawyer-info"><small>СТАРШИЙ ЮРИСТ</small><strong>Воробьёв Константин<br />Дмитриевич</strong><em>Арбитраж и корпоративные споры</em><i>Открыть профиль ↗</i></span></button></article>
-          <article class="lawyer-card reveal" data-name="Игорь Черниговский административное налоговое право"><button class="lawyer-open" data-lawyer="igor" aria-label="Открыть профиль Игоря Черниговского"><span class="lawyer-photo"><img src="assets/images/igor-chernigovskii.png" alt="Черниговский Игорь Александрович" /></span><span class="lawyer-info"><small>РУКОВОДИТЕЛЬ ПРАКТИКИ</small><strong>Черниговский Игорь<br />Александрович</strong><em>Административное и налоговое право</em><i>Открыть профиль ↗</i></span></button></article>
-          <article class="lawyer-card reveal" data-name="Михаил Попов семейное наследственное недвижимость"><button class="lawyer-open" data-lawyer="mikhail" aria-label="Открыть профиль Михаила Попова"><span class="lawyer-photo"><img src="assets/images/mihail-popov.png" alt="Попов Михаил Денисович" /></span><span class="lawyer-info"><small>ЮРИСТ</small><strong>Попов Михаил<br />Денисович</strong><em>Наследство и недвижимость</em><i>Открыть профиль ↗</i></span></button></article>
+          <article class="lawyer-card" data-name="Роман Мишин семейные гражданские судебные споры"><button class="lawyer-open" data-lawyer="roman" aria-label="Открыть профиль Романа Мишина"><span class="lawyer-photo"><img loading="lazy" decoding="async" src="assets/images/roman-mishin.webp" alt="Роман Артурович Мишин" /></span><span class="lawyer-info"><small>УПРАВЛЯЮЩИЙ ПАРТНЁР</small><strong>Роман Мишин</strong><em>Семейные и гражданские споры</em><i>Открыть профиль</i></span></button></article>
+          <article class="lawyer-card" data-name="Богдан Беляев уголовное право защита бизнеса"><button class="lawyer-open" data-lawyer="bogdan" aria-label="Открыть профиль Богдана Беляева"><span class="lawyer-photo"><img loading="lazy" decoding="async" src="assets/images/bogdan-belyaev.webp" alt="Беляев Богдан Денисович" /></span><span class="lawyer-info"><small>ПАРТНЁР</small><strong>Богдан Беляев</strong><em>Уголовно-правовая защита бизнеса</em><i>Открыть профиль</i></span></button></article>
+          <article class="lawyer-card" data-name="Константин Воробьёв арбитраж корпоративные споры договоры"><button class="lawyer-open" data-lawyer="konstantin" aria-label="Открыть профиль Константина Воробьёва"><span class="lawyer-photo"><img loading="lazy" decoding="async" src="assets/images/konstantin-vorobyev.webp" alt="Воробьёв Константин Дмитриевич" /></span><span class="lawyer-info"><small>СТАРШИЙ ЮРИСТ</small><strong>Константин Воробьёв</strong><em>Арбитраж и корпоративные споры</em><i>Открыть профиль</i></span></button></article>
+          <article class="lawyer-card" data-name="Игорь Черниговский административное налоговое право"><button class="lawyer-open" data-lawyer="igor" aria-label="Открыть профиль Игоря Черниговского"><span class="lawyer-photo"><img loading="lazy" decoding="async" src="assets/images/igor-chernigovskii.webp" alt="Черниговский Игорь Александрович" /></span><span class="lawyer-info"><small>РУКОВОДИТЕЛЬ ПРАКТИКИ</small><strong>Игорь Черниговский</strong><em>Административное и налоговое право</em><i>Открыть профиль</i></span></button></article>
+          <article class="lawyer-card" data-name="Михаил Попов семейное наследственное недвижимость"><button class="lawyer-open" data-lawyer="mikhail" aria-label="Открыть профиль Михаила Попова"><span class="lawyer-photo"><img loading="lazy" decoding="async" src="assets/images/mihail-popov.webp" alt="Попов Михаил Денисович" /></span><span class="lawyer-info"><small>ЮРИСТ</small><strong>Михаил Попов</strong><em>Наследство и недвижимость</em><i>Открыть профиль</i></span></button></article>
           <div class="team-empty" hidden>По этому запросу специалист не найден. Напишите нам — подберём юриста вручную.</div>
         </div>
       </section>
 
-      <section id="cases" class="cases section-pad">
-        <div class="cases-intro reveal"><p class="kicker"><span>05</span> НЕДАВНИЕ РЕЗУЛЬТАТЫ</p><h2>Не просто ведём дела.<br /><em>Меняем расклад.</em></h2><p>Как у сильнейших судебных фирм мира, мы показываем опыт через конкретные задачи и итог — без раскрытия адвокатской тайны.</p></div>
-        <article class="flagship-case reveal">
-          <header class="flagship-head"><div><small>ДОСЬЕ № 24—118</small><h3>Квартира стоимостью<br />12,8 млн ₽</h3></div><div class="flagship-verdict"><span>ИТОГ</span><strong>100% актива сохранено</strong></div></header>
-          <div class="flagship-body">
-            <nav class="flagship-nav" aria-label="Этапы дела"><button class="active" data-dossier-stage="risk"><span>01</span> Риск</button><button data-dossier-stage="evidence"><span>02</span> Доказательства</button><button data-dossier-stage="turn"><span>03</span> Перелом</button><button data-dossier-stage="result"><span>04</span> Решение</button></nav>
-            <section class="dossier-scene" aria-live="polite">
-              <div class="dossier-document" aria-hidden="true"><div class="document-top"><span>МАТЕРИАЛЫ ДЕЛА</span><b>КОНФИДЕНЦИАЛЬНО</b></div><div class="document-lines"><i></i><i></i><i></i><i></i><i></i></div><strong id="dossier-stamp">РИСК</strong><small>Обезличенный фрагмент</small></div>
-              <div class="dossier-copy"><small id="dossier-index">ЭТАП 01 / 04</small><h4 id="dossier-title">Претензия на половину квартиры</h4><p id="dossier-text">Оппонент требовал признать объект совместным и выплатить компенсацию, ссылаясь на вложения в период брака.</p><div class="dossier-metric"><span id="dossier-metric-label">ЦЕНА РИСКА</span><strong id="dossier-metric">12,8 млн ₽</strong></div></div>
-            </section>
+
+
+      <section id="strategy" class="strategy-room section-pad" aria-labelledby="strategy-title">
+        <details class="resource"><summary><h2 id="strategy-title" tabindex="-1">Подготовка к встрече</h2><span>Составить список документов</span></summary>
+        <div class="strategy-workspace">
+          <div class="strategy-controls" id="route-questions"></div>
+          <aside class="strategy-output" id="route-sheet" aria-labelledby="sheet-title">
+            <div class="strategy-output-top"><span>Лист подготовки</span><span id="strategy-status" role="status">0 из 3</span></div>
+            <div class="sheet-progress" aria-hidden="true"><i></i><i></i><i></i></div>
+            <h3 id="sheet-title">К первой встрече</h3>
+            <p id="sheet-summary">Выберите тему, стадию и формат помощи. Лист будет заполняться по ходу.</p>
+            <dl class="sheet-lines">
+              <div><dt>Что взять с собой</dt><dd id="sheet-documents">Появится после выбора темы</dd></div>
+              <div><dt>Что уточнить на встрече</dt><dd id="sheet-question">Появится после выбора стадии</dd></div>
+              <div><dt>С кем обсудить</dt><dd id="sheet-lawyer">Появится после выбора темы</dd></div>
+            </dl>
+            <button type="button" class="strategy-contact" data-sheet-contact disabled>Перенести в обращение</button>
+            <div class="sheet-actions">
+              <button type="button" data-sheet-profile disabled>Профиль юриста</button>
+              <button type="button" data-sheet-copy disabled>Скопировать</button>
+              <button type="button" data-sheet-print disabled>Распечатать</button>
+            </div>
+            <p class="sheet-feedback" role="status"></p>
+          </aside>
+        </div>
+        <p class="strategy-note">Ответы остаются на этой странице до отправки обращения.</p>
+        </details>
+      </section>
+
+      <section id="documents" class="documents section-pad" aria-labelledby="documents-title">
+        <details class="resource"><summary><h2 id="documents-title">Шаблоны документов</h2><span>Посмотреть и скачать</span></summary>
+        <a class="paper-download" href="assets/documents/pretrial-claim.txt" download>Досудебная претензия · TXT <span class="ui-icon" data-icon="download" aria-hidden="true"></span></a>
+        <div class="document-workbench">
+          <article class="annotated-document" aria-label="Образец досудебной претензии">
+            <div class="board-label"><span>Образец документа</span><span>Досудебный порядок</span></div>
+            <h3>Досудебная претензия</h3>
+            <div class="annotation" data-note="recipient"><button type="button" aria-expanded="false" aria-controls="note-recipient"><span>Кому и от кого</span><span class="ui-icon" data-icon="expand" aria-hidden="true"></span></button><p>Кому [имя или название], от кого [имя и контакты]</p><div id="note-recipient" class="annotation-note" hidden>Укажите, кто направляет претензию и кому она адресована. Сверьте данные адресата с договором и сохраните подтверждение отправки.</div></div>
+            <div class="annotation" data-note="facts"><button type="button" aria-expanded="false" aria-controls="note-facts"><span>Что произошло</span><span class="ui-icon" data-icon="expand" aria-hidden="true"></span></button><p>[Дата] между сторонами заключен [договор]. Обязательство нарушено следующим образом: […]</p><div id="note-facts" class="annotation-note" hidden>Кратко опишите события по датам. Для каждого важного факта укажите документ или переписку, где его можно проверить.</div></div>
+            <div class="annotation" data-note="request"><button type="button" aria-expanded="false" aria-controls="note-request"><span>Требование</span><span class="ui-icon" data-icon="expand" aria-hidden="true"></span></button><p>Прошу [конкретное действие]. Если требование денежное, приложен расчет.</p><div id="note-request" class="annotation-note" hidden>Сформулируйте, какого действия вы ждете от адресата. Если просите выплату, приложите расчет. Срок ответа зависит от ситуации и условий договора.</div></div>
+            <div class="annotation" data-note="attachments"><button type="button" aria-expanded="false" aria-controls="note-attachments"><span>Приложения</span><span class="ui-icon" data-icon="expand" aria-hidden="true"></span></button><p>[Копия договора], [подтверждающие документы], [расчет].</p><div id="note-attachments" class="annotation-note" hidden>Перечислите документы, на которые ссылаетесь. Подпишите черновик после проверки реквизитов и приложений.</div></div>
+          </article>
+          <aside class="annotation-margin" aria-hidden="true"><p class="kicker">Пометки на полях</p><p id="margin-note">Выберите фрагмент, чтобы увидеть пояснение.</p></aside>
+        </div>
+        <div class="document-list">
+          <a href="assets/documents/statement-of-claim.txt" download><strong>Исковое заявление</strong><small>Скачать TXT</small></a>
+          <a href="assets/documents/divorce-application.txt" download><strong>Заявление о расторжении брака</strong><small>Скачать TXT</small></a>
+          <a href="assets/documents/power-of-attorney-checklist.txt" download><strong>Чек-лист доверенности</strong><small>Скачать TXT</small></a>
+        </div></details>
+      </section>
+
+      <section id="contact" class="contact section-pad" aria-labelledby="contact-title">
+        <div class="contact-copy reveal">
+          <h2 id="contact-title">Обсудим<br><em>ваше дело</em></h2>
+          <p>Оставьте обращение или свяжитесь с нами напрямую.</p>
+          <address class="contact-links">
+            <a href="tel:+79832439690">+7 983 243-96-90</a>
+            <a href="mailto:cxsuiemode@gmail.com">cxsuiemode@gmail.com</a>
+            <span>Иркутск · консультации по всей России</span>
+          </address>
+        </div>
+        <div class="contact-workbench">
+          <form class="contact-form" id="contact-form" aria-labelledby="contact-form-title">
+            <div class="correspondence-heading"><h3 id="contact-form-title">Письмо юристу</h3><span class="paper-imprint" aria-hidden="true"></span></div>
+            <div class="contact-pair">
+              <div class="field"><label for="contact-name">Ваше имя</label><input id="contact-name" name="name" autocomplete="name" maxlength="100" required placeholder="Введите имя" /></div>
+              <div class="field"><label for="contact-phone">Телефон</label><input id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+7 900 000-00-00" maxlength="18" aria-describedby="phone-hint" /><small id="phone-hint" class="phone-hint">Номер для звонка по России</small></div>
+            </div>
+            <div class="field contact-topic-field"><label id="contact-topic-label" for="contact-topic">Тема обращения</label><select id="contact-topic" name="topic" required><option value="">Выберите тему</option><option>Семейный спор</option><option>Недвижимость и наследство</option><option>Бизнес и договоры</option><option>Спор с ведомством</option><option>Другое</option></select></div>
+            <div class="field"><label for="contact-message">Сообщение <small>по желанию</small></label><textarea id="contact-message" name="message" maxlength="4000" placeholder="Коротко опишите ситуацию"></textarea></div>
+            <div class="contact-context" hidden><p id="contact-context"></p><button class="paper-link" type="button" id="contact-detach">Убрать из обращения</button></div>
+            <div class="letter-actions"><button class="button button-acid" type="submit">Проверить обращение<span class="ui-icon" data-icon="next" aria-hidden="true"></span></button></div>
+          </form>
+          <dialog id="contact-review" aria-labelledby="contact-review-title">
+            <button class="paper-close" type="button" aria-label="Закрыть предпросмотр"><span class="ui-icon" data-icon="close" aria-hidden="true"></span></button>
+            <h3 id="contact-review-title">Проверьте обращение</h3>
+            <dl id="contact-preview"></dl>
+            <div class="contact-review-actions">
+              <button type="button" class="button button-acid" id="contact-send">Отправить обращение</button>
+              <button type="button" class="paper-link" id="contact-edit">Исправить</button>
+            </div>
+            <p id="contact-send-status" role="status"></p>
+          </dialog>
+          <div id="contact-receipt" class="contact-receipt" hidden tabindex="-1">
+            <div class="correspondence-heading"><h3>Обращение принято</h3><span class="paper-imprint" aria-hidden="true"></span></div>
+            <p>Номер обращения <strong id="contact-reference"></strong></p>
+            <button type="button" class="paper-link" id="contact-new">Новое обращение</button>
           </div>
-        </article>
-        <div class="case-stack">
-          <article class="case-row reveal"><div class="case-number">01</div><div class="case-content"><span>СЕМЕЙНЫЙ СПОР · 2026</span><h3>Сохранили клиенту квартиру, приобретённую до брака, и отклонили требования на 12,8 млн ₽</h3><p>Доказали раздельный характер вложений и восстановили цепочку платежей за восемь лет.</p></div><div class="case-result"><strong>100%</strong><span>актива сохранено</span><button class="case-toggle" aria-expanded="false">Как мы это сделали <b>+</b></button></div><div class="case-story" hidden><div><small>01 · РИСК</small><strong>Претензия на половину квартиры</strong><p>Оппонент ссылался на общие вложения в период брака и требовал признать объект совместным.</p></div><div><small>02 · АНАЛИЗ</small><strong>Восстановили движение денег</strong><p>Собрали банковские документы, договоры и подтверждения происхождения средств за восемь лет.</p></div><div><small>03 · ПЕРЕЛОМ</small><strong>Разрушили ключевой расчёт</strong><p>Показали двойной учёт платежей и отсутствие связи части расходов с приобретением объекта.</p></div><div><small>04 · РЕЗУЛЬТАТ</small><strong>Требования отклонены</strong><p>Суд сохранил квартиру за клиентом и взыскал с другой стороны часть судебных расходов.</p></div></div></article>
-          <article class="case-row reveal"><div class="case-number">02</div><div class="case-content"><span>АРБИТРАЖ · 2025</span><h3>Взыскали задолженность по поставке и договорную неустойку для производственной компании</h3><p>Обеспечительные меры были приняты судом в течение суток после подачи заявления.</p></div><div class="case-result"><strong>9,4 млн ₽</strong><span>взыскано</span><button class="case-toggle" aria-expanded="false">Как мы это сделали <b>+</b></button></div><div class="case-story" hidden><div><small>01 · РИСК</small><strong>Активы начали исчезать</strong><p>После претензии контрагент прекратил связь и начал выводить имущество из компании.</p></div><div><small>02 · АНАЛИЗ</small><strong>Собрали единую цепочку</strong><p>Связали договор, поставки, электронную переписку и частичные платежи в одну доказательную модель.</p></div><div><small>03 · ПЕРЕЛОМ</small><strong>Обеспечили будущий результат</strong><p>Одновременно с иском подали доказательства риска и добились обеспечительных мер.</p></div><div><small>04 · РЕЗУЛЬТАТ</small><strong>Долг и неустойка взысканы</strong><p>Решение удалось исполнить за счёт активов, сохранённых на старте процесса.</p></div></div></article>
-          <article class="case-row reveal"><div class="case-number">03</div><div class="case-content"><span>АДМИНИСТРАТИВНОЕ ДЕЛО · 2025</span><h3>Отменили незаконное решение ведомства до вступления санкций в силу</h3><p>Сформировали доказательную позицию и добились прекращения производства.</p></div><div class="case-result"><strong>14 дней</strong><span>до решения</span><button class="case-toggle" aria-expanded="false">Как мы это сделали <b>+</b></button></div><div class="case-story" hidden><div><small>01 · РИСК</small><strong>Остановка деятельности</strong><p>Постановление создавало угрозу приостановки работы и расторжения ключевых контрактов.</p></div><div><small>02 · АНАЛИЗ</small><strong>Нашли процессуальный разрыв</strong><p>Сопоставили акт проверки, протокол и материалы ведомства, выявив противоречия в датах.</p></div><div><small>03 · ПЕРЕЛОМ</small><strong>Потребовали исходные данные</strong><p>После раскрытия первичных материалов стало ясно, что вывод ведомства не подтверждён.</p></div><div><small>04 · РЕЗУЛЬТАТ</small><strong>Производство прекращено</strong><p>Санкции не вступили в силу, компания продолжила работу без остановки.</p></div></div></article>
         </div>
-        <p class="legal-note">Информация приведена как пример оформления сайта. Результат всегда зависит от обстоятельств конкретного дела.</p>
-      </section>
-
-      <section id="documents" class="documents section-pad">
-        <div class="documents-copy reveal"><p class="kicker"><span>06</span> ПОЛЕЗНЫЕ МАТЕРИАЛЫ</p><h2>Документы,<br /><em>с которых можно начать.</em></h2><p>Базовые формы для типовых ситуаций. Скачайте, заполните черновик и отправьте юристу на проверку перед подачей.</p><button class="text-button" data-open-consult>Проверить документ у юриста ↗</button></div>
-        <div class="document-list reveal">
-          <a href="assets/documents/pretrial-claim.txt" download><span class="file-icon">TXT</span><div><strong>Досудебная претензия</strong><small>Универсальный редактируемый шаблон</small></div><b>↓</b></a>
-          <a href="assets/documents/statement-of-claim.txt" download><span class="file-icon">TXT</span><div><strong>Исковое заявление</strong><small>Структура и обязательные реквизиты</small></div><b>↓</b></a>
-          <a href="assets/documents/divorce-application.txt" download><span class="file-icon">TXT</span><div><strong>Заявление о расторжении брака</strong><small>Базовая редактируемая форма</small></div><b>↓</b></a>
-          <a href="assets/documents/power-of-attorney-checklist.txt" download><span class="file-icon">TXT</span><div><strong>Чек-лист доверенности</strong><small>Пункты, которые важно предусмотреть</small></div><b>↓</b></a>
-        </div>
-      </section>
-
-      <section id="reviews" class="reviews section-pad">
-        <div class="reviews-head reveal"><div><p class="kicker"><span>07</span> ДОВЕРИЕ</p><h2>Клиенты<br /><em>о нашей работе.</em></h2></div><div class="review-controls"><button data-review-prev aria-label="Предыдущий отзыв">←</button><span><b id="review-current">01</b> / 04</span><button data-review-next aria-label="Следующий отзыв">→</button></div></div>
-        <div class="review-stage reveal">
-          <article class="review active"><span class="quote">“</span><blockquote>Роман не обещал лёгкой победы, зато уже на первой встрече разложил ситуацию по шагам. В суде оппоненты трижды меняли позицию, а наша оставалась цельной до самого решения.</blockquote><div><strong>Анна К.</strong><span>раздел имущества · Иркутск</span></div></article>
-          <article class="review"><span class="quote">“</span><blockquote>Богдан подключился вечером, когда счёт шёл буквально на часы. Спокойно объяснил семье порядок действий и на следующий день уже представлял наши интересы.</blockquote><div><strong>Алексей М.</strong><span>защита руководителя · Ангарск</span></div></article>
-          <article class="review"><span class="quote">“</span><blockquote>Константин быстро нашёл слабое место в договоре. Спор, который тянулся полгода, удалось закрыть мировым соглашением без остановки бизнеса.</blockquote><div><strong>Директор ООО «Север»</strong><span>договорный спор · Сибирь</span></div></article>
-          <article class="review"><span class="quote">“</span><blockquote>Михаил взял на себя наследственное дело целиком: запросы, документы, заседания. Я понимала, что происходит, но мне не приходилось жить в юридической переписке.</blockquote><div><strong>Елена В.</strong><span>наследственный спор · онлайн</span></div></article>
-        </div>
-        <p class="legal-note">Имена и отдельные детали изменены для сохранения конфиденциальности.</p>
-      </section>
-
-      <section class="principles section-pad"><p class="kicker reveal"><span>08</span> НАШ ПОДХОД</p><div class="principle-quote reveal">Вам не нужен юрист, который говорит сложно.<br />Вам нужен тот, кто <em>делает сложное понятным.</em></div><div class="principle-grid"><div class="reveal"><span>01</span><strong>Прямой прогноз</strong><p>Не продаём надежду. До старта называем риски, сценарии и реалистичный результат.</p></div><div class="reveal"><span>02</span><strong>Партнёр ведёт дело</strong><p>Ключевые решения не передаются случайному исполнителю. Вы знаете, кто отвечает за результат.</p></div><div class="reveal"><span>03</span><strong>Позиция в цифрах</strong><p>Сроки, стоимость и этапы фиксируются заранее. Вы видите прогресс и понимаете следующий шаг.</p></div></div></section>
-
-      <section id="contact" class="contact section-pad">
-        <div class="contact-copy reveal"><p class="kicker"><span>09</span> СВЯЗАТЬСЯ</p><h2>Начнём<br /><em>с разговора.</em></h2><p>Опишите ситуацию в двух-трёх предложениях. Мы определим, кто из команды лучше подходит для вашей задачи.</p><div class="contact-links"><a href="tel:+79832439690">+7 983 243-96-90</a><a href="mailto:cxsuiemode@gmail.com">cxsuiemode@gmail.com</a><span>Иркутск · консультации по всей России</span></div></div>
-        <form class="contact-form reveal" id="contact-form"><div class="field"><label for="contact-name">Имя</label><input id="contact-name" name="name" required placeholder="Как к вам обращаться" /></div><div class="field"><label for="contact-phone">Телефон</label><input id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required value="+7" maxlength="18" aria-describedby="phone-hint" /><small id="phone-hint" class="phone-hint">Введите 10 цифр номера после кода +7</small></div><div class="field"><label id="contact-topic-label">Тема</label><div class="topic-picker" data-topic-picker><button class="topic-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="contact-topic-label" aria-controls="contact-topic-list"><span data-topic-label>Семейный спор</span><i aria-hidden="true">↓</i></button><div id="contact-topic-list" class="topic-options" role="listbox" aria-labelledby="contact-topic-label" hidden><button type="button" role="option" aria-selected="true" data-topic-option="Семейный спор">Семейный спор</button><button type="button" role="option" aria-selected="false" data-topic-option="Гражданское дело">Гражданское дело</button><button type="button" role="option" aria-selected="false" data-topic-option="Защита бизнеса">Защита бизнеса</button><button type="button" role="option" aria-selected="false" data-topic-option="Административное дело">Административное дело</button><button type="button" role="option" aria-selected="false" data-topic-option="Другое">Другое</button></div><input id="contact-topic" name="topic" type="hidden" value="Семейный спор" /></div></div><div class="field"><label for="contact-message">Коротко о ситуации</label><textarea id="contact-message" name="message" placeholder="Что произошло?"></textarea></div><button class="button button-acid" type="submit">Подготовить обращение <span>↗</span></button><small>После нажатия откроется письмо на адрес фирмы. Отправка происходит через вашу почтовую программу.</small></form>
       </section>
     </main>
 
-    <footer class="footer"><a class="brand" href="#top"><span class="brand-symbol">П</span><span class="brand-name">ПОДКИНУЛИ<small>ЮРИДИЧЕСКАЯ ФИРМА</small></span></a><div><a href="tel:+79832439690">+7 983 243-96-90</a><a href="mailto:cxsuiemode@gmail.com">cxsuiemode@gmail.com</a></div><div><span>© 2026 «Подкинули»</span><span>Информация на сайте не является юридической консультацией</span></div><a class="to-top" href="#top">НАВЕРХ ↑</a></footer>
+    <footer class="footer colophon">
+      <a class="colophon-signature" href="#top" aria-label="Подкинули – на главную">
+        <span class="firm-monogram" aria-hidden="true"><i></i></span>
+        <span class="firm-wordmark">Подкинули<small>Юридическая фирма · Иркутск</small></span>
+      </a>
+      <nav class="colophon-links" aria-label="Навигация в подвале">
+        <a href="#practice">Практики</a><a href="#team">Команда</a><a href="#documents">Документы</a>
+      </nav>
+      <address class="colophon-contacts">
+        <a href="tel:+79832439690">+7 983 243-96-90</a>
+        <a href="mailto:cxsuiemode@gmail.com">cxsuiemode@gmail.com</a>
+      </address>
+      <div class="colophon-base">
+        <span>© 2026 «Подкинули»</span>
+        <span>Информация на сайте не является юридической консультацией</span>
+        <a class="to-top" href="#top">Наверх <span class="ui-icon" data-icon="up" aria-hidden="true"></span></a>
+      </div>
+    </footer>
 
-    <button class="chat-launcher" aria-label="Открыть чат с правовым помощником" aria-expanded="false"><span class="chat-pulse"></span><span class="chat-label">Разобрать ситуацию</span><b>↗</b></button>
+    <button class="chat-launcher" aria-label="Открыть чат с правовым помощником" aria-expanded="false"><span class="chat-label">Правовой помощник</span></button>
     <aside class="chat" aria-hidden="true" aria-label="Правовой помощник">
       <header class="chat-header">
-        <div><span class="online-dot"></span><p><strong>Правовой помощник</strong><small>Сценарный разбор · без регистрации</small></p></div>
-        <div class="chat-header-actions"><button class="chat-reset" type="button">Начать заново</button><button class="chat-close" aria-label="Закрыть чат">×</button></div>
+        <div><p><strong>Правовой помощник</strong><small>Сценарный разбор · без регистрации</small></p></div>
+        <div class="chat-header-actions"><button class="chat-route" type="button" data-chat-route>К листу подготовки</button><button class="chat-reset" type="button">Начать заново</button><button class="chat-close" aria-label="Закрыть чат"><span class="ui-icon" data-icon="close" aria-hidden="true"></span></button></div>
       </header>
       <div class="chat-shell">
         <nav class="chat-topics" aria-label="Темы обращения">
@@ -168,22 +279,34 @@
         <section class="chat-dialog">
           <div class="chat-messages" aria-live="polite"></div>
           <div class="chat-suggestions" aria-label="Варианты ответа"></div>
-          <form class="chat-form"><input aria-label="Сообщение" placeholder="Опишите ситуацию своими словами…" autocomplete="off" /><button type="submit" aria-label="Отправить">↑</button></form>
+          <form class="chat-form"><input aria-label="Сообщение" placeholder="Опишите ситуацию своими словами…" autocomplete="off" /><button type="submit" aria-label="Отправить"><span class="ui-icon" data-icon="send" aria-hidden="true"></span></button></form>
           <small class="chat-disclaimer">Не отправляйте паспортные данные и номера карт. Ответ носит общий информационный характер и не заменяет консультацию юриста.</small>
         </section>
       </div>
     </aside>
 
-    <div class="profile-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profile-name"><div class="profile-backdrop" data-close-profile></div><div class="profile-panel"><button class="profile-close" data-close-profile aria-label="Закрыть профиль">×</button><div class="profile-image"><img id="profile-image" src="" alt="" /></div><div class="profile-content"><p class="kicker"><span id="profile-index">01</span> <b id="profile-role"></b></p><h2 id="profile-name"></h2><p class="profile-lead" id="profile-lead"></p><div class="profile-meta"><div><small>ОПЫТ</small><strong id="profile-experience"></strong></div><div><small>ФОКУС</small><strong id="profile-focus"></strong></div></div><h3>Ключевая практика</h3><ul id="profile-list"></ul><blockquote id="profile-quote"></blockquote><button class="button button-acid" data-profile-consult>Обсудить дело <span>↗</span></button></div></div></div>
+    <div class="profile-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profile-name"><div class="profile-backdrop" data-close-profile></div><div class="profile-panel" tabindex="-1"><button class="profile-close" data-close-profile aria-label="Закрыть профиль"><span class="ui-icon" data-icon="close" aria-hidden="true"></span></button><div class="profile-image"><img id="profile-image" src="" alt="" /><article class="profile-file" aria-label="Пример разбора"><small>Пример разбора</small><h3 id="profile-file-title"></h3><p id="profile-file-text"></p></article></div><div class="profile-content"><p class="kicker" id="profile-role"></p><h2 id="profile-name"></h2><p class="profile-lead" id="profile-lead"></p><div class="profile-meta"><div><small>ОПЫТ</small><strong id="profile-experience"></strong></div><div><small>ФОКУС</small><strong id="profile-focus"></strong></div></div><h3>Ключевая практика</h3><ul id="profile-list"></ul><blockquote id="profile-quote"></blockquote><button type="button" class="button button-acid" data-profile-consult>Обсудить дело</button></div></div></div>
 
-    <div class="consult-modal" aria-hidden="true" role="dialog" aria-modal="true"><div class="profile-backdrop" data-close-consult></div><div class="consult-panel"><button data-close-consult aria-label="Закрыть">×</button><p class="kicker"><span>01</span> КОНСУЛЬТАЦИЯ</p><h2>Расскажите,<br /><em>что случилось.</em></h2><p>Позвоните нам или отправьте письмо — ответим в рабочее время и договоримся о встрече.</p><a href="tel:+79832439690">+7 983 243-96-90</a><a href="mailto:cxsuiemode@gmail.com">cxsuiemode@gmail.com</a></div></div>
 
-    <div class="matcher-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="matcher-title"><div class="profile-backdrop" data-close-match></div><div class="matcher-panel"><button class="matcher-close" data-close-match aria-label="Закрыть подбор">×</button><aside class="matcher-side"><span class="matcher-label">ПЕРСОНАЛЬНЫЙ МАРШРУТ</span><div class="matcher-counter"><strong id="matcher-count">01</strong><small>/ 03</small></div><div class="matcher-progress"><i class="active"></i><i></i><i></i></div><p>Три коротких вопроса. Ответы обрабатываются только в вашем браузере и никуда не отправляются.</p><button class="matcher-back" type="button" hidden>← Назад</button></aside><section class="matcher-content" id="matcher-content"></section></div></div>
 
-    <div class="urgent-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="urgent-title"><div class="profile-backdrop" data-close-urgent></div><div class="urgent-panel"><button class="urgent-close" data-close-urgent aria-label="Закрыть срочную помощь">×</button><div class="urgent-badge"><span></span> СРОЧНАЯ ПОМОЩЬ</div><h2 id="urgent-title">Сейчас важны<br /><em>первые действия.</em></h2><p>Выберите ситуацию — откроем короткий безопасный алгоритм в помощнике. Если человеку угрожает опасность, звоните 112.</p><div class="urgent-grid"><button data-urgent-scenario="business-crisis"><span>01</span><strong>Обыск или задержание</strong><small>Что делать прямо сейчас →</small></button><button data-urgent-scenario="urgent-summons"><span>02</span><strong>Повестка или вызов</strong><small>Как подготовиться →</small></button><button data-urgent-scenario="urgent-assets"><span>03</span><strong>Вывод имущества</strong><small>Как сохранить актив →</small></button><button data-urgent-scenario="urgent-deadline"><span>04</span><strong>Истекает срок</strong><small>Что нужно зафиксировать →</small></button></div><a class="urgent-call" href="tel:+79832439690"><span>Экстренная связь</span><strong>+7 983 243-96-90</strong><b>ПОЗВОНИТЬ ↗</b></a></div></div>
+    <div class="urgent-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="urgent-title"><div class="profile-backdrop" data-close-urgent></div><div class="urgent-panel"><button class="urgent-close" type="button" data-close-urgent aria-label="Закрыть срочную помощь"><span class="ui-icon" data-icon="close" aria-hidden="true"></span></button><div class="urgent-badge"><span></span> СРОЧНАЯ ПОМОЩЬ</div><h2 id="urgent-title">Сейчас важны<br /><em>первые действия.</em></h2><p>Выберите ситуацию — откроем короткий безопасный алгоритм в помощнике. Если человеку угрожает опасность, звоните 112.</p><div class="urgent-grid"><button data-urgent-scenario="business-crisis"><span>01</span><strong>Обыск или задержание</strong><small>Что делать прямо сейчас</small></button><button data-urgent-scenario="urgent-summons"><span>02</span><strong>Повестка или вызов</strong><small>Как подготовиться</small></button><button data-urgent-scenario="urgent-assets"><span>03</span><strong>Вывод имущества</strong><small>Как сохранить актив</small></button><button data-urgent-scenario="urgent-deadline"><span>04</span><strong>Истекает срок</strong><small>Что нужно зафиксировать</small></button></div><a class="urgent-call" href="tel:+79832439690"><span>Экстренная связь</span><strong>+7 983 243-96-90</strong><b>Позвонить</b></a></div></div>
 
-    <nav class="mobile-action-bar" aria-label="Быстрые действия"><a href="tel:+79832439690"><span>⌕</span> Позвонить</a><button data-open-match><span>◇</span> Подбор</button><button data-open-chat><span>□</span> Помощник</button></nav>
+    <dialog class="intake-dialog" id="hero-intake" aria-labelledby="intake-title">
+      <div class="intake-inner">
+        <button class="paper-close" type="button" aria-label="Закрыть разбор"><span class="ui-icon" data-icon="close" aria-hidden="true"></span></button>
+        <p class="kicker" id="hero-stage-label">Подготовка к консультации</p>
+        <h2 id="intake-title" tabindex="-1" autofocus>С чем связан вопрос?</h2>
+        <div id="hero-intake-options"></div>
+        <div class="intake-navigation"><button class="paper-link intake-back" type="button" hidden>Назад</button></div>
+      </div>
+    </dialog>
 
-    <script src="script.js?v=20260905-2"></script>
+    <nav class="mobile-action-bar action-dock" aria-label="Быстрые действия">
+      <a href="tel:+79832439690"><span class="ui-icon" data-icon="call" aria-hidden="true"></span>Позвонить</a>
+      <button type="button" data-route-stage="" aria-haspopup="dialog">Разобрать дело</button>
+      <button type="button" data-open-chat><span class="ui-icon" data-icon="discussion" aria-hidden="true"></span>Помощник</button>
+    </nav>
+
+    <script src="script.js?v=20261119-13"></script>
   </body>
 </html>
